@@ -64,7 +64,7 @@ export const Contact = () => {
 
               <div className="space-y-4 pt-2">
                 {[
-                  { icon: Mail, label: 'Email', value: 'emmanuel.quarshie@example.com', href: 'mailto:emmanuel.quarshie@example.com' },
+                  { icon: Mail, label: 'Email', value: 'emmanuelquarshie395@gmail.com', href: 'mailto:emmanuel.quarshie@example.com' },
                   { icon: MapPin, label: 'Location', value: 'Anbert Garden, Ghana / Remote Worldwide', href: mapAddressUrl },
                   { icon: Clock, label: 'Timezone', value: 'Greenwich Mean Time (GMT / UTC+0)', href: '#' }
                 ].map((item, idx) => (

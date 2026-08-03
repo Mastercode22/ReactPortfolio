@@ -158,8 +158,8 @@ portfolio/
 **Emmanuel Quarshie**
 - **Role**: Principal Digital Architect & Design Engineer
 - **Location**: Anbert Garden, Ghana
-- **Email**: `emmanuel.quarshie@example.com`
-- **GitHub**: [github.com/emmanuelquarshie](https://github.com/emmanuelquarshie)
+- **Email**: `emmanuelquarshie395@gmail.com`
+- **GitHub**: [[github.com/emmanuelquarshie]([https://github.com/emmanuelquarshie](https://github.com/Mastercode22))](https://github.com/Mastercode22)
 
 ---
 
