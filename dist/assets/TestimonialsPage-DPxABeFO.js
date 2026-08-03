@@ -1,0 +1,1 @@
+import{j as r}from"./index-ZkN_EC_U.js";import{P as s}from"./GlassCard-CRR7KiWD.js";import{T as o}from"./Testimonials-BO-OICiT.js";import"./SectionHeader-AJze9WIx.js";const m=()=>r.jsx(s,{children:r.jsx(o,{})});export{m as TestimonialsPage,m as default};

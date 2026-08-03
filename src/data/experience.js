@@ -1,0 +1,61 @@
+export const experienceData = [
+  {
+    id: 1,
+    role: 'Principal Digital Architect & Design Engineer',
+    company: 'Aura Studio Digital',
+    period: '2024 — Present',
+    location: 'San Francisco, CA / Remote',
+    type: 'Full-time / Lead',
+    description: 'Leading client engagement and digital engineering for Fortune 500 brands and venture-backed SaaS startups. Oversaw the design system modernization for 12+ enterprise web platforms.',
+    achievements: [
+      'Architected micro-frontend React SPA structure serving 4M+ monthly active users',
+      'Reduced average first contentful paint (FCP) across client platforms from 2.1s to 0.45s',
+      'Engineered custom Neumorphism & Glassmorphism component library deployed across 8 product teams'
+    ],
+    skills: ['React 19', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'TypeScript', 'Node.js']
+  },
+  {
+    id: 2,
+    role: 'Senior Frontend Engineer & UI Specialist',
+    company: 'Linear Craft Labs',
+    period: '2022 — 2024',
+    location: 'Austin, TX',
+    type: 'Full-time',
+    description: 'Spearheaded frontend application development for high-frequency trading dashboards and collaborative design canvases.',
+    achievements: [
+      'Developed real-time canvas chart renderer executing 60 FPS under continuous WebSocket data streams',
+      'Engineered dark/light mode engine with local storage caching and zero flash on load',
+      'Mentored 6 junior/mid-level frontend engineers on modern React architecture and design patterns'
+    ],
+    skills: ['React', 'JavaScript', 'Tailwind CSS', 'REST API', 'Framer Motion', 'Git']
+  },
+  {
+    id: 3,
+    role: 'Full Stack Web Developer',
+    company: 'Vanguard Interactive',
+    period: '2020 — 2022',
+    location: 'New York, NY',
+    type: 'Full-time',
+    description: 'Built scalable backend microservices and high-converting e-commerce web applications for global retail clients.',
+    achievements: [
+      'Created custom PHP REST backend and MySQL schema handling 100k+ daily transactions',
+      'Integrated Stripe & PayPal gateway APIs with automated webhook logging',
+      'Improved SEO rankings for flagship clients resulting in +65% organic traffic growth'
+    ],
+    skills: ['PHP', 'MySQL', 'JavaScript', 'React', 'REST API', 'Git', 'CSS3']
+  },
+  {
+    id: 4,
+    role: 'UI/UX Developer & Frontend Intern',
+    company: 'PixelCraft Agency',
+    period: '2019 — 2020',
+    location: 'Seattle, WA',
+    type: 'Contract',
+    description: 'Crafted custom client websites, interactive landing pages, and responsive UI components.',
+    achievements: [
+      'Converted 30+ Figma design specifications into mobile-responsive HTML/CSS/JS templates',
+      'Assisted in setting up automated cross-browser testing suites using Cypress'
+    ],
+    skills: ['HTML5', 'CSS3', 'JavaScript', 'Figma', 'Git']
+  }
+];

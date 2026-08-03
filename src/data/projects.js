@@ -1,0 +1,170 @@
+export const projectsData = [
+  {
+    id: 'luxoragift',
+    title: 'Luxora Gift Luxury E-Commerce Platform',
+    subtitle: 'Ultra-high-end luxury gifting engine with real-time customization and instant spatial previews.',
+    category: 'E-Commerce & Digital Retail',
+    image: '/images/ecom.jpg',
+    tags: ['React 19', 'Tailwind CSS', 'Node.js', 'REST API', 'Framer Motion'],
+    description: 'Luxora Gift is an opulent digital luxury commerce engine engineered for bespoke luxury gifting. It features 3D product previews, micro-interactions, custom gift message styling, and dynamic checkout integration.',
+    features: [
+      'Interactive 3D Gift Box Builder with dynamic engraving preview',
+      'Ultra-fast instant search with multi-faceted sensory filters',
+      'Stripe & Apple Pay headless checkout integration with sub-second payment processing',
+      'Real-time order tracking with animated status timeline'
+    ],
+    challenges: 'Achieving 60 FPS 3D rendering on mobile viewports while retaining crisp high-resolution textures without bloating payload size.',
+    solutions: 'Implemented progressive LOD (Level of Detail) texture streaming, offscreen WebGL workers, and WebP compression.',
+    performanceStats: [
+      { label: 'Lighthouse Score', value: '99/100' },
+      { label: 'Conversion Lift', value: '+42%' },
+      { label: 'Page Load Time', value: '0.42s' },
+      { label: 'TTFB', value: '65ms' }
+    ],
+    architecture: 'Headless React SPA communicating with Node.js microservices, cached via Redis and Cloudflare Edge Workers.',
+    gallery: ['/images/ecom.jpg', '/images/ecm.jpg', '/images/img4.jpeg'],
+    liveDemo: 'https://luxoragift.example.com',
+    github: 'https://github.com/emmanuelquarshie/luxoragift-luxury-store',
+    featured: true
+  },
+  {
+    id: 'retailrow',
+    title: 'RetailRow Smart Omnichannel Point of Sale',
+    subtitle: 'Modern enterprise retail analytics dashboard and real-time inventory management tool.',
+    category: 'SaaS & Enterprise Systems',
+    image: '/images/ecm.jpg',
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL'],
+    description: 'RetailRow empowers enterprise retailers to synchronize online e-commerce channels with physical point-of-sale terminals in real time, delivering instantaneous inventory updates and predictive AI forecasting.',
+    features: [
+      'Real-time WebSocket inventory sync across 500+ physical stores',
+      'Predictive demand forecasting with interactive visual charts',
+      'Multi-currency cashier checkout with barcode scanner integration',
+      'Role-based permission matrix & automated audit logging'
+    ],
+    challenges: 'Handling concurrent state synchronization across thousands of active store POS terminals without write conflicts in MySQL.',
+    solutions: 'Designed an optimistic state update layer with Redis queue lock management and automated conflict resolution algorithms.',
+    performanceStats: [
+      { label: 'Sync Latency', value: '< 15ms' },
+      { label: 'Uptime Guarantee', value: '99.99%' },
+      { label: 'Daily Transactions', value: '1.2M+' },
+      { label: 'Store Efficiency', value: '+38%' }
+    ],
+    architecture: 'React frontend connected to a robust PHP/MySQL REST API with WebSocket event broadcast relay.',
+    gallery: ['/images/ecm.jpg', '/images/CRM System.jpg', '/images/task.jpg'],
+    liveDemo: 'https://retailrow.example.com',
+    github: 'https://github.com/emmanuelquarshie/retailrow-pos-system',
+    featured: true
+  },
+  {
+    id: 'nexus-crm',
+    title: 'Nexus Enterprise CRM & Intelligence Suite',
+    subtitle: 'High-performance customer relation hub with automated workflow pipelines.',
+    category: 'Enterprise SaaS',
+    image: '/images/CRM System.jpg',
+    tags: ['React', 'Tailwind CSS', 'REST API', 'Node', 'GSAP'],
+    description: 'Nexus CRM centralizes client communications, automated sales funnels, and contract lifecycle management into a sleek, dark-themed command center built for speed.',
+    features: [
+      'Kanban sales pipeline with drag-and-drop animations',
+      'Automated email campaign sequences & lead scoring algorithm',
+      'Integrated VoIP call recording & AI transcript summarization',
+      'Customizable widget dashboards with dark/light themes'
+    ],
+    challenges: 'Rendering 50,000+ customer records seamlessly without DOM slowdown or dropped frames.',
+    solutions: 'Implemented virtualized list view rendering (`react-window`) and debounced data hydration hooks.',
+    performanceStats: [
+      { label: 'DOM Node Reduction', value: '85%' },
+      { label: 'Load Time', value: '0.38s' },
+      { label: 'User Retention', value: '94%' },
+      { label: 'Pipeline Speed', value: '3x Faster' }
+    ],
+    architecture: 'React SPA architecture with micro-frontend modules and JSON web token authentication.',
+    gallery: ['/images/CRM System.jpg', '/images/analy.jpg', '/images/task.jpg'],
+    liveDemo: 'https://nexuscrm.example.com',
+    github: 'https://github.com/emmanuelquarshie/nexus-enterprise-crm',
+    featured: true
+  },
+  {
+    id: 'healthpulse',
+    title: 'HealthPulse Telemedicine Platform',
+    subtitle: 'HIPAA-compliant telemedicine app with end-to-end encrypted video consultations.',
+    category: 'Healthcare & Biotech',
+    image: '/images/health.jpg',
+    tags: ['React 19', 'Tailwind CSS', 'WebRTC', 'PHP', 'Node'],
+    description: 'HealthPulse connects patients with board-certified physicians worldwide through instant video consultations, encrypted health record sharing, and smart prescription management.',
+    features: [
+      'Ultra-low latency HD video call powered by WebRTC',
+      'Interactive patient triage questionnaire with symptom checker',
+      'E-Prescription delivery to local pharmacy partners',
+      'Biometric sign-in & HIPAA audit compliance verification'
+    ],
+    challenges: 'Ensuring zero video frame dropping under unstable mobile network conditions in remote areas.',
+    solutions: 'Leveraged dynamic adaptive bitrate streaming and automatic fallback to audio-only high-fidelity codecs.',
+    performanceStats: [
+      { label: 'HIPAA Rating', value: '100% Compliant' },
+      { label: 'Video Latency', value: '< 90ms' },
+      { label: 'Patient Satisfaction', value: '4.9/5' },
+      { label: 'Consultations Completed', value: '250,000+' }
+    ],
+    architecture: 'React web & mobile client with WebRTC peer connections backed by secure PHP API infrastructure.',
+    gallery: ['/images/health.jpg', '/images/analy.jpg', '/images/img1.jpg'],
+    liveDemo: 'https://healthpulse.example.com',
+    github: 'https://github.com/emmanuelquarshie/healthpulse-telehealth',
+    featured: false
+  },
+  {
+    id: 'fintech-invest',
+    title: 'Fintech Velocity Wealth Management',
+    subtitle: 'Real-time financial asset tracker and algorithmic portfolio balancing system.',
+    category: 'Fintech & Web3',
+    image: '/images/invest.jpg',
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'REST API', 'Framer Motion'],
+    description: 'Fintech Velocity offers high-net-worth investors live telemetry on stock portfolios, crypto assets, real estate holdings, and automatic risk diversification indexing.',
+    features: [
+      'Sub-millisecond ticker feed streaming with Canvas charts',
+      'Algorithmic rebalancing alerts based on risk tolerance profiles',
+      'Multi-entity tax optimization report generator',
+      'Bank-grade AES-256 client-side data encryption'
+    ],
+    challenges: 'Plotting tens of thousands of intraday market points smoothly on interactive responsive financial charts.',
+    solutions: 'Custom HTML5 Canvas chart renderer with WebAssembly math acceleration.',
+    performanceStats: [
+      { label: 'Data Latency', value: '< 5ms' },
+      { label: 'Chart FPS', value: '60 FPS' },
+      { label: 'Assets Tracked', value: '$2.4B+' },
+      { label: 'Security Score', value: 'A+' }
+    ],
+    architecture: 'React SPA powered by reactive WebSockets and WebAssembly processing pipelines.',
+    gallery: ['/images/invest.jpg', '/images/analy.jpg', '/images/CRM System.jpg'],
+    liveDemo: 'https://fintechvelocity.example.com',
+    github: 'https://github.com/emmanuelquarshie/fintech-velocity-dashboard',
+    featured: false
+  },
+  {
+    id: 'taskflow',
+    title: 'TaskFlow Pro Project Workspace',
+    subtitle: 'Collaborative task canvas for engineering & creative design teams.',
+    category: 'Productivity & Collaboration',
+    image: '/images/task.jpg',
+    tags: ['React', 'Tailwind CSS', 'Node', 'Git', 'Framer Motion'],
+    description: 'TaskFlow Pro merges visual mind-mapping, sprint planning, and automated Git pull request tracking into a single unified space built with Neumorphic elegance.',
+    features: [
+      'Infinite canvas visual workflow builder',
+      'Real-time multi-user cursor collaboration',
+      'GitHub & GitLab PR status synchronization',
+      'Custom automation triggers & Webhook integrations'
+    ],
+    challenges: 'Maintaining precise multi-user cursor positioning and state conflict resolution without UI delay.',
+    solutions: 'Implemented Conflict-free Replicated Data Types (CRDTs) for seamless optimistic concurrent edits.',
+    performanceStats: [
+      { label: 'Realtime Sync', value: 'Instant' },
+      { label: 'Team Velocity', value: '+45%' },
+      { label: 'Active Users', value: '80,000+' },
+      { label: 'Crash Rate', value: '0.00%' }
+    ],
+    architecture: 'React frontend with CRDT state synchronization and Node.js backend infrastructure.',
+    gallery: ['/images/task.jpg', '/images/analy.jpg', '/images/ecm.jpg'],
+    liveDemo: 'https://taskflowpro.example.com',
+    github: 'https://github.com/alexrivera/taskflow-pro-canvas',
+    featured: false
+  }
+];
