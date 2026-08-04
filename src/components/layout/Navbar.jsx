@@ -107,6 +107,20 @@ export const Navbar = () => {
             {/* Mobile Quick Links: ONLY visible on screens smaller than lg */}
             <div className="flex lg:hidden items-center gap-1">
               <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `px-2 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    isActive
+                      ? isDark
+                        ? 'bg-[#7C5CFF]/20 text-[#7C5CFF] border border-[#7C5CFF]/30'
+                        : 'bg-[#6C63FF]/15 text-[#6C63FF] border border-[#6C63FF]/30'
+                      : 'text-[#1B2430] dark:text-[#F8FAFC] hover:text-[#6C63FF] dark:hover:text-[#7C5CFF]'
+                  }`
+                }
+              >
+                Home
+              </NavLink>
+              <NavLink
                 to="/about"
                 className={({ isActive }) =>
                   `px-2 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
