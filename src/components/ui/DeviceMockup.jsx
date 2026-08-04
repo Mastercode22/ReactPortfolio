@@ -18,10 +18,10 @@ export const DeviceMockup = ({ projectImage = '/images/ecom.jpg' }) => {
 
   return (
     <div className="relative w-full max-w-xl mx-auto perspective-1000 py-6">
-      {/* Soft Ambient Blob Shadow underneath */}
+      {}
       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-3/4 h-12 bg-gradient-to-r from-[#6C63FF]/30 to-[#5FA8FF]/30 rounded-full blur-2xl opacity-70 animate-pulse" />
 
-      {/* Main Floating 3D MacBook Container */}
+      {}
       <motion.div
         animate={{
           rotateY: mousePos.x,
