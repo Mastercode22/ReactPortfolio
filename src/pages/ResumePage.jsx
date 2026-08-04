@@ -58,7 +58,7 @@ export const ResumePage = () => {
           <div className="border-b border-slate-200 dark:border-slate-800 pb-8 flex flex-col sm:flex-row justify-between gap-6">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black text-[#1B2430] dark:text-[#F8FAFC]">
-                Rapid Render Quarshie
+                Rapid Render
               </h1>
               <p className="text-sm font-bold uppercase tracking-wider gradient-text mt-1">
                 Principal Digital Architect & Design Engineer

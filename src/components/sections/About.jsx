@@ -44,7 +44,7 @@ export const About = () => {
               </div>
 
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#1B2430] dark:text-[#F8FAFC]">
-                Rapid Render Quarshie
+                Rapid Render 
               </h3>
               <p className="text-xs font-bold uppercase tracking-wider gradient-text mt-1">
                 Principal Digital Architect

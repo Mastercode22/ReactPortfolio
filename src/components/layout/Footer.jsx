@@ -44,12 +44,11 @@ export const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-          
           {/* Col 1: Brand Info */}
           <div className="md:col-span-5 space-y-4">
             {/* Logo with Lightning Aura Glow */}
             <motion.div
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
               className="relative inline-flex items-center cursor-pointer select-none group p-1"
@@ -62,19 +61,39 @@ export const Footer = () => {
                 alt="Rapid Render Logo"
                 className="relative z-10 h-12 sm:h-14 w-auto object-contain transition-transform duration-300 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)] group-hover:drop-shadow-[0_0_18px_rgba(245,158,11,0.9)]"
               />
+              <span className="font-extrabold text-xl tracking-tight text-[#1B2430] dark:text-[#F8FAFC]">
+                Rapid <span className="gradient-text">Render</span>
+              </span>
             </motion.div>
-            
+
             <p className="text-sm text-[#667085] dark:text-[#CBD5E1] max-w-md leading-relaxed">
-              Crafting world-class digital experiences blending Neumorphic depth, Glassmorphism, and Apple-grade precision engineering.
+              Crafting world-class digital experiences blending Neumorphic
+              depth, Glassmorphism, and Apple-grade precision engineering.
             </p>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
               {[
-                { icon: Github, href: 'https://github.com/Rapid Renderquarshie', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/in/Rapid Renderquarshie', label: 'LinkedIn' },
-                { icon: Twitter, href: 'https://twitter.com/Rapid Renderquarshie', label: 'Twitter' },
-                { icon: Mail, href: 'mailto:Rapid Render.quarshie@example.com', label: 'Email' }
+                {
+                  icon: Github,
+                  href: "https://github.com/Rapid Renderquarshie",
+                  label: "GitHub",
+                },
+                {
+                  icon: Linkedin,
+                  href: "https://linkedin.com/in/Rapid Renderquarshie",
+                  label: "LinkedIn",
+                },
+                {
+                  icon: Twitter,
+                  href: "https://twitter.com/Rapid Renderquarshie",
+                  label: "Twitter",
+                },
+                {
+                  icon: Mail,
+                  href: "mailto:Rapid Render.quarshie@example.com",
+                  label: "Email",
+                },
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
@@ -86,8 +105,8 @@ export const Footer = () => {
                   aria-label={social.label}
                   className={`p-3 rounded-2xl transition-all ${
                     isDark
-                      ? 'neu-flat-dark text-[#CBD5E1] hover:text-[#7C5CFF]'
-                      : 'neu-flat-light text-[#667085] hover:text-[#6C63FF]'
+                      ? "neu-flat-dark text-[#CBD5E1] hover:text-[#7C5CFF]"
+                      : "neu-flat-light text-[#667085] hover:text-[#6C63FF]"
                   }`}
                 >
                   <social.icon className="w-4 h-4" />
@@ -121,10 +140,14 @@ export const Footer = () => {
               Subscribe to Insights
             </h4>
             <p className="text-xs text-[#667085] dark:text-[#CBD5E1]">
-              Get periodic updates on digital design systems, React 19 architecture, and UI trends.
+              Get periodic updates on digital design systems, React 19
+              architecture, and UI trends.
             </p>
 
-            <form onSubmit={handleNewsletter} className="relative flex items-center">
+            <form
+              onSubmit={handleNewsletter}
+              className="relative flex items-center"
+            >
               <input
                 type="email"
                 required
@@ -132,33 +155,45 @@ export const Footer = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className={`w-full py-3 pl-4 pr-12 rounded-2xl text-xs font-medium outline-none transition-all ${
-                  isDark ? 'neu-pressed-dark text-white placeholder-slate-500' : 'neu-pressed-light text-slate-800 placeholder-slate-400'
+                  isDark
+                    ? "neu-pressed-dark text-white placeholder-slate-500"
+                    : "neu-pressed-light text-slate-800 placeholder-slate-400"
                 }`}
               />
               <button
                 type="submit"
                 className="absolute right-1.5 p-2 rounded-xl bg-gradient-to-r from-[#6C63FF] to-[#5FA8FF] text-white shadow-md hover:scale-105 transition-transform"
               >
-                {subscribed ? <Check className="w-4 h-4" /> : <Send className="w-4 h-4" />}
+                {subscribed ? (
+                  <Check className="w-4 h-4" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
               </button>
             </form>
             {subscribed && (
-              <p className="text-xs text-emerald-500 font-semibold">Thank you for subscribing!</p>
+              <p className="text-xs text-emerald-500 font-semibold">
+                Thank you for subscribing!
+              </p>
             )}
           </div>
-
         </div>
 
         {/* Bottom Copyright & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#667085] dark:text-[#CBD5E1]">
-          <p>© {new Date().getFullYear()} Rapid Render Quarshie. All rights reserved. Crafted with React 19 & Tailwind CSS.</p>
+          <p>
+            © {new Date().getFullYear()} Rapid Render . All rights reserved.
+            Crafted with React 19 & Tailwind CSS.
+          </p>
 
           <motion.button
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl font-semibold transition-all ${
-              isDark ? 'neu-flat-dark text-white' : 'neu-flat-light text-[#1B2430]'
+              isDark
+                ? "neu-flat-dark text-white"
+                : "neu-flat-light text-[#1B2430]"
             }`}
           >
             <span>Back to top</span>
