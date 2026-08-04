@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Code2, ArrowUp, Github, Linkedin, Twitter, Mail, Send, Check } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Twitter, Mail, Send, Check } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const footerNavLinks = [
@@ -47,21 +47,22 @@ export const Footer = () => {
           
           {/* Col 1: Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <div
+            {/* Logo with Lightning Aura Glow */}
+            <motion.div
               onClick={() => navigate('/')}
-              className="flex items-center gap-3 cursor-pointer group"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              className="relative inline-flex items-center cursor-pointer select-none group p-1"
             >
-              <div
-                className={`p-2.5 rounded-2xl flex items-center justify-center ${
-                  isDark ? 'neu-flat-dark text-[#7C5CFF]' : 'neu-flat-light text-[#6C63FF]'
-                }`}
-              >
-                <Code2 className="w-6 h-6" />
-              </div>
-              <span className="font-extrabold text-xl tracking-tight text-[#1B2430] dark:text-[#F8FAFC]">
-                Rapid Render<span className="gradient-text">.Quarshie</span>
-              </span>
-            </div>
+              {/* Lightning Aura Glow */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#F59E0B]/60 via-[#7C5CFF]/50 to-[#3B82F6]/60 blur-md opacity-80 group-hover:opacity-100 transition-opacity duration-300 animate-pulse pointer-events-none" />
+
+              <img
+                src="/logo.png"
+                alt="Rapid Render Logo"
+                className="relative z-10 h-12 sm:h-14 w-auto object-contain transition-transform duration-300 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)] group-hover:drop-shadow-[0_0_18px_rgba(245,158,11,0.9)]"
+              />
+            </motion.div>
             
             <p className="text-sm text-[#667085] dark:text-[#CBD5E1] max-w-md leading-relaxed">
               Crafting world-class digital experiences blending Neumorphic depth, Glassmorphism, and Apple-grade precision engineering.
