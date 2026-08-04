@@ -37,30 +37,33 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 lg:px-8 pt-4 transition-all duration-500">
+    <header className="fixed top-0 left-0 right-0 z-40 px-2 sm:px-6 lg:px-8 pt-3 sm:pt-4 transition-all duration-500">
       <div className="max-w-7xl mx-auto">
         <nav
-          className={`relative rounded-3xl transition-all duration-500 flex items-center justify-between px-4 sm:px-6 py-3 ${
+          className={`relative rounded-3xl transition-all duration-500 flex items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 ${
             scrolled
               ? isDark
-                ? 'glass-nav-dark py-2.5 shadow-2xl backdrop-blur-xl border-white/10'
-                : 'glass-nav-light py-2.5 shadow-lg backdrop-blur-xl border-white/80'
+                ? 'glass-nav-dark py-2 shadow-2xl backdrop-blur-xl border-white/10'
+                : 'glass-nav-light py-2 shadow-lg backdrop-blur-xl border-white/80'
               : isDark
                 ? 'bg-[#171E2F]/60 backdrop-blur-md border border-white/5'
                 : 'bg-white/60 backdrop-blur-md border border-white/60 shadow-sm'
           }`}
         >
-          {/* Logo */}
+          {/* Logo with Glowing Lightning Effect */}
           <motion.div
             onClick={() => navigate('/')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center cursor-pointer select-none group"
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.94 }}
+            className="relative flex items-center cursor-pointer select-none group p-1"
           >
+            {/* Lightning Aura Glow */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#F59E0B]/60 via-[#7C5CFF]/50 to-[#3B82F6]/60 blur-md opacity-80 group-hover:opacity-100 transition-opacity duration-300 animate-pulse pointer-events-none" />
+
             <img
               src="/logo.png"
               alt="Rapid Render Logo"
-              className="h-8 sm:h-10 md:h-12 w-auto object-contain transition-transform duration-300 filter drop-shadow-md group-hover:drop-shadow-lg"
+              className="relative z-10 h-11 sm:h-13 md:h-14 w-auto object-contain transition-transform duration-300 drop-shadow-[0_0_12px_rgba(245,158,11,0.6)] group-hover:drop-shadow-[0_0_18px_rgba(245,158,11,0.9)]"
             />
           </motion.div>
 
@@ -99,8 +102,40 @@ export const Navbar = () => {
             })}
           </div>
 
-          {/* Right Actions: Theme Toggle & Hire Button & Mobile Hamburger */}
-          <div className="flex items-center gap-3">
+          {/* Right Actions: Mobile Quick Links (About & Contact), Theme Toggle, Hire Button & Mobile Hamburger */}
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            {/* Mobile Quick Links: ONLY visible on screens smaller than lg */}
+            <div className="flex lg:hidden items-center gap-1">
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `px-2 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    isActive
+                      ? isDark
+                        ? 'bg-[#7C5CFF]/20 text-[#7C5CFF] border border-[#7C5CFF]/30'
+                        : 'bg-[#6C63FF]/15 text-[#6C63FF] border border-[#6C63FF]/30'
+                      : 'text-[#1B2430] dark:text-[#F8FAFC] hover:text-[#6C63FF] dark:hover:text-[#7C5CFF]'
+                  }`
+                }
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `px-2 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    isActive
+                      ? isDark
+                        ? 'bg-[#7C5CFF]/20 text-[#7C5CFF] border border-[#7C5CFF]/30'
+                        : 'bg-[#6C63FF]/15 text-[#6C63FF] border border-[#6C63FF]/30'
+                      : 'text-[#1B2430] dark:text-[#F8FAFC] hover:text-[#6C63FF] dark:hover:text-[#7C5CFF]'
+                  }`
+                }
+              >
+                Contact
+              </NavLink>
+            </div>
+
             <ThemeToggle />
 
             {/* Desktop CTA Resume / Contact Button */}
