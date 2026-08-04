@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2, Sparkles, FileText } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 import ThemeToggle from '../ui/ThemeToggle';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -51,28 +51,18 @@ export const Navbar = () => {
           }`}
         >
           {/* Logo */}
-          <div
+          <motion.div
             onClick={() => navigate('/')}
-            className="flex items-center gap-3 cursor-pointer group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center cursor-pointer select-none group"
           >
-            <motion.div
-              whileHover={{ rotate: 180, scale: 1.1 }}
-              transition={{ duration: 0.5 }}
-              className={`p-2.5 rounded-2xl flex items-center justify-center ${
-                isDark ? 'neu-flat-dark text-[#7C5CFF]' : 'neu-flat-light text-[#6C63FF]'
-              }`}
-            >
-              <Code2 className="w-5 h-5" />
-            </motion.div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#1B2430] dark:text-[#F8FAFC]">
-                Emmanuel<span className="gradient-text">.Quarshie</span>
-              </span>
-              <span className="text-[10px] font-medium tracking-widest uppercase text-[#667085] dark:text-[#CBD5E1] -mt-1 hidden sm:inline-block">
-                Digital Architect
-              </span>
-            </div>
-          </div>
+            <img
+              src="/logo.png"
+              alt="Rapid Render Logo"
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain transition-transform duration-300 filter drop-shadow-md group-hover:drop-shadow-lg"
+            />
+          </motion.div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
