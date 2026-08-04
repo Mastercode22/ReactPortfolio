@@ -40,8 +40,13 @@ export const PremiumCard = ({
       style={{ borderRadius: '24px' }}
       {...props}
     >
-      {/* Illuminated Left Edge Accent (Embedded LED Strip) */}
-      <div
+      {/* Illuminated Left Edge Accent (Animates from Bottom to Top on Load) */}
+      <motion.div
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true, margin: '-30px' }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: delay + 0.15 }}
+        style={{ transformOrigin: 'bottom center' }}
         className={`absolute left-0 top-3 bottom-3 w-[3.5px] rounded-r-full pointer-events-none transition-all duration-300 ${
           isDark
             ? 'bg-gradient-to-b from-[#FFD76A] via-[#F4B942] to-[#E39B18] shadow-[0_0_12px_rgba(244,185,66,0.6),0_0_20px_rgba(255,215,106,0.3)] group-hover:shadow-[0_0_18px_rgba(244,185,66,0.9),0_0_30px_rgba(255,215,106,0.6)] group-hover:w-[4.5px]'
@@ -49,12 +54,17 @@ export const PremiumCard = ({
         }`}
       />
 
-      {/* Soft Ambient Inner Glow Reflection along left edge */}
-      <div
+      {/* Soft Ambient Inner Glow Reflection along left edge (Animates from Bottom to Top) */}
+      <motion.div
+        initial={{ opacity: 0, scaleY: 0 }}
+        whileInView={{ opacity: 0.6, scaleY: 1 }}
+        viewport={{ once: true, margin: '-30px' }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: delay + 0.1 }}
+        style={{ transformOrigin: 'bottom center' }}
         className={`absolute left-0 top-0 bottom-0 w-20 pointer-events-none transition-opacity duration-300 ${
           isDark
-            ? 'bg-gradient-to-r from-[#F4B942]/12 via-[#F4B942]/4 to-transparent opacity-60 group-hover:opacity-100'
-            : 'bg-gradient-to-r from-[#3B82F6]/12 via-[#3B82F6]/4 to-transparent opacity-60 group-hover:opacity-100'
+            ? 'bg-gradient-to-r from-[#F4B942]/14 via-[#F4B942]/4 to-transparent group-hover:opacity-100'
+            : 'bg-gradient-to-r from-[#3B82F6]/14 via-[#3B82F6]/4 to-transparent group-hover:opacity-100'
         }`}
       />
 
