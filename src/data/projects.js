@@ -24,7 +24,7 @@ export const projectsData = [
     architecture: 'Headless React SPA communicating with Node.js microservices, cached via Redis and Cloudflare Edge Workers.',
     gallery: ['/images/ecom.jpg', '/images/ecm.jpg', '/images/img4.jpeg'],
     liveDemo: 'https://luxoragift.example.com',
-    github: 'https://github.com/emmanuelquarshie/luxoragift-luxury-store',
+    github: 'https://github.com/Rapid Renderquarshie/luxoragift-luxury-store',
     featured: true
   },
   {
@@ -52,7 +52,7 @@ export const projectsData = [
     architecture: 'React frontend connected to a robust PHP/MySQL REST API with WebSocket event broadcast relay.',
     gallery: ['/images/ecm.jpg', '/images/CRM System.jpg', '/images/task.jpg'],
     liveDemo: 'https://retailrow.example.com',
-    github: 'https://github.com/emmanuelquarshie/retailrow-pos-system',
+    github: 'https://github.com/Rapid Renderquarshie/retailrow-pos-system',
     featured: true
   },
   {
@@ -80,7 +80,7 @@ export const projectsData = [
     architecture: 'React SPA architecture with micro-frontend modules and JSON web token authentication.',
     gallery: ['/images/CRM System.jpg', '/images/analy.jpg', '/images/task.jpg'],
     liveDemo: 'https://nexuscrm.example.com',
-    github: 'https://github.com/emmanuelquarshie/nexus-enterprise-crm',
+    github: 'https://github.com/Rapid Renderquarshie/nexus-enterprise-crm',
     featured: true
   },
   {
@@ -108,7 +108,7 @@ export const projectsData = [
     architecture: 'React web & mobile client with WebRTC peer connections backed by secure PHP API infrastructure.',
     gallery: ['/images/health.jpg', '/images/analy.jpg', '/images/img1.jpg'],
     liveDemo: 'https://healthpulse.example.com',
-    github: 'https://github.com/emmanuelquarshie/healthpulse-telehealth',
+    github: 'https://github.com/Rapid Renderquarshie/healthpulse-telehealth',
     featured: false
   },
   {
@@ -136,7 +136,7 @@ export const projectsData = [
     architecture: 'React SPA powered by reactive WebSockets and WebAssembly processing pipelines.',
     gallery: ['/images/invest.jpg', '/images/analy.jpg', '/images/CRM System.jpg'],
     liveDemo: 'https://fintechvelocity.example.com',
-    github: 'https://github.com/emmanuelquarshie/fintech-velocity-dashboard',
+    github: 'https://github.com/Rapid Renderquarshie/fintech-velocity-dashboard',
     featured: false
   },
   {

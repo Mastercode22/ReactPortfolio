@@ -59,7 +59,7 @@ export const Footer = () => {
                 <Code2 className="w-6 h-6" />
               </div>
               <span className="font-extrabold text-xl tracking-tight text-[#1B2430] dark:text-[#F8FAFC]">
-                Emmanuel<span className="gradient-text">.Quarshie</span>
+                Rapid Render<span className="gradient-text">.Quarshie</span>
               </span>
             </div>
             
@@ -70,10 +70,10 @@ export const Footer = () => {
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
               {[
-                { icon: Github, href: 'https://github.com/emmanuelquarshie', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/in/emmanuelquarshie', label: 'LinkedIn' },
-                { icon: Twitter, href: 'https://twitter.com/emmanuelquarshie', label: 'Twitter' },
-                { icon: Mail, href: 'mailto:emmanuel.quarshie@example.com', label: 'Email' }
+                { icon: Github, href: 'https://github.com/Rapid Renderquarshie', label: 'GitHub' },
+                { icon: Linkedin, href: 'https://linkedin.com/in/Rapid Renderquarshie', label: 'LinkedIn' },
+                { icon: Twitter, href: 'https://twitter.com/Rapid Renderquarshie', label: 'Twitter' },
+                { icon: Mail, href: 'mailto:Rapid Render.quarshie@example.com', label: 'Email' }
               ].map((social, idx) => (
                 <motion.a
                   key={idx}
@@ -150,7 +150,7 @@ export const Footer = () => {
 
         {/* Bottom Copyright & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#667085] dark:text-[#CBD5E1]">
-          <p>© {new Date().getFullYear()} Emmanuel Quarshie. All rights reserved. Crafted with React 19 & Tailwind CSS.</p>
+          <p>© {new Date().getFullYear()} Rapid Render Quarshie. All rights reserved. Crafted with React 19 & Tailwind CSS.</p>
 
           <motion.button
             whileHover={{ y: -3 }}

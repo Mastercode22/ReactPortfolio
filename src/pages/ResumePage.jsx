@@ -58,7 +58,7 @@ export const ResumePage = () => {
           <div className="border-b border-slate-200 dark:border-slate-800 pb-8 flex flex-col sm:flex-row justify-between gap-6">
             <div>
               <h1 className="text-3xl sm:text-4xl font-black text-[#1B2430] dark:text-[#F8FAFC]">
-                Emmanuel Quarshie
+                Rapid Render Quarshie
               </h1>
               <p className="text-sm font-bold uppercase tracking-wider gradient-text mt-1">
                 Principal Digital Architect & Design Engineer
@@ -69,9 +69,9 @@ export const ResumePage = () => {
             </div>
 
             <div className="space-y-2 text-xs font-medium text-[#667085] dark:text-[#CBD5E1] shrink-0">
-              <div className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-[#6C63FF]" /> emmanuel.quarshie@example.com</div>
+              <div className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-[#6C63FF]" /> Rapid Render.quarshie@example.com</div>
               <div className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-[#6C63FF]" /> Anbert Garden, Ghana</div>
-              <div className="flex items-center gap-2"><Globe className="w-3.5 h-3.5 text-[#6C63FF]" /> emmanuelquarshie.dev</div>
+              <div className="flex items-center gap-2"><Globe className="w-3.5 h-3.5 text-[#6C63FF]" /> Rapid Renderquarshie.dev</div>
             </div>
           </div>
 
