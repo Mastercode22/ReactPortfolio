@@ -21,10 +21,12 @@ export const PremiumCard = ({
     ? {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: '-50px' },
+        viewport: { once: true, amount: 0.01 },
         transition: { duration: 0.35, ease: 'easeOut', delay },
       }
-    : {};
+    : {
+        initial: { opacity: 1, y: 0 },
+      };
 
   return (
     <motion.div
@@ -44,8 +46,8 @@ export const PremiumCard = ({
       <motion.div
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
-        viewport={{ once: true, margin: '-30px' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: delay + 0.15 }}
+        viewport={{ once: true, amount: 0.01 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: delay + 0.1 }}
         style={{ transformOrigin: 'bottom center' }}
         className={`absolute left-0 top-3 bottom-3 w-[3.5px] rounded-r-full pointer-events-none transition-all duration-300 ${
           isDark
@@ -58,8 +60,8 @@ export const PremiumCard = ({
       <motion.div
         initial={{ opacity: 0, scaleY: 0 }}
         whileInView={{ opacity: 0.6, scaleY: 1 }}
-        viewport={{ once: true, margin: '-30px' }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: delay + 0.1 }}
+        viewport={{ once: true, amount: 0.01 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: delay + 0.05 }}
         style={{ transformOrigin: 'bottom center' }}
         className={`absolute left-0 top-0 bottom-0 w-20 pointer-events-none transition-opacity duration-300 ${
           isDark
