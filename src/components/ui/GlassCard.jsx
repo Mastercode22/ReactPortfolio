@@ -1,6 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useTheme } from '../../context/ThemeContext';
+import PremiumCard from './PremiumCard';
 
 export const GlassCard = ({
   children,
@@ -9,27 +8,19 @@ export const GlassCard = ({
   neumorphic = false,
   gradientBorder = false,
   onClick,
+  padding,
   ...props
 }) => {
-  const { isDark } = useTheme();
-
-  let baseStyle = '';
-  if (neumorphic) {
-    baseStyle = isDark ? 'neu-card-dark' : 'neu-card-light';
-  } else {
-    baseStyle = isDark ? 'glass-card-dark' : 'glass-card-light';
-  }
-
   return (
-    <motion.div
-      whileHover={hoverEffect ? { y: -6, scale: 1.01 } : {}}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
+    <PremiumCard
+      className={className}
+      hoverEffect={hoverEffect}
       onClick={onClick}
-      className={`relative rounded-3xl p-6 sm:p-8 transition-all duration-300 ${baseStyle} ${gradientBorder ? 'gradient-border' : ''} ${className}`}
+      padding={padding}
       {...props}
     >
       {children}
-    </motion.div>
+    </PremiumCard>
   );
 };
 
