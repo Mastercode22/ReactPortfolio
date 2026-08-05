@@ -43,6 +43,8 @@ export const DeviceMockup = ({ projectImage = '/images/ecom.jpg' }) => {
             <img
               src={projectImage}
               alt="MacBook Preview"
+              loading="eager"
+              fetchPriority="high"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Glossy Reflection Overlay */}

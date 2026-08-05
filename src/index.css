@@ -182,3 +182,18 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* 60 FPS Custom Loader Animations */
+@keyframes loaderSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes loaderSpinRev {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.025); }
+}
+

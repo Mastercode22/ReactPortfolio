@@ -2,17 +2,193 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+    <!-- Immediate Theme Initialization to prevent theme flash before JS loads -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Rapid Render Quarshie — Principal Digital Architect & Design Engineer</title>
     <meta name="description" content="A world-class digital portfolio blending Neumorphism, Glassmorphism, and Apple-grade minimalism. Interactive web engineering and high-end UI design." />
     
-    <!-- Google Fonts Inter -->
+    <!-- Preload Critical Hero Image & Fonts -->
+    <link rel="preload" as="image" href="/images/ecom.jpg" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Embedded Instant Loader Styles & 60 FPS Keyframes -->
+    <style>
+      #app-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #F6F7FB;
+        color: #1B2430;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 450ms cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform, filter;
+        user-select: none;
+      }
+
+      html.dark #app-loader {
+        background-color: #090B13;
+        color: #F8FAFC;
+      }
+
+      html.dark #app-loader .bracket-left,
+      html.dark #app-loader .bracket-right,
+      html.dark #app-loader .monogram-r {
+        stroke: url(#htmlLoaderGradDark) !important;
+      }
+
+      #app-loader.loader-exit {
+        opacity: 0 !important;
+        transform: scale(1.04) !important;
+        filter: blur(12px) !important;
+        pointer-events: none !important;
+      }
+
+      @keyframes loaderSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes loaderSpinRev {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+      }
+      @keyframes loaderPulse {
+        0%, 100% { opacity: 0.9; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.025); }
+      }
+      @keyframes dotPulse {
+        0%, 100% { opacity: 0.35; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.25); }
+      }
+
+      #app-loader .spin-ring {
+        transform-origin: center;
+        animation: loaderSpin 14s linear infinite;
+      }
+      #app-loader .spin-ring-rev {
+        transform-origin: center;
+        animation: loaderSpinRev 22s linear infinite;
+      }
+      #app-loader .pulse-emblem {
+        transform-origin: center;
+        animation: loaderPulse 2.5s ease-in-out infinite;
+      }
+      #app-loader .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #6C63FF;
+        display: inline-block;
+        animation: dotPulse 1.5s ease-in-out infinite;
+        box-shadow: 0 0 10px rgba(108, 99, 255, 0.6);
+      }
+      html.dark #app-loader .status-dot {
+        background-color: #F59E0B;
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+      }
+
+      #app-loader .loader-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+      }
+
+      #app-loader .loader-status {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        letter-spacing: 0.25em;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #64748B;
+      }
+      html.dark #app-loader .loader-status {
+        color: #94A3B8;
+      }
+    </style>
   </head>
   <body class="bg-[#F6F7FB] dark:bg-[#090B13] text-[#1B2430] dark:text-[#F8FAFC] font-sans antialiased transition-colors duration-300 overflow-x-hidden selection:bg-[#6C63FF]/20 selection:text-[#6C63FF]">
+    
+    <!-- Phase 1 — Instant HTML Splash Loader -->
+    <div id="app-loader" aria-label="Initializing Rapid Render Architecture" role="status">
+      <div class="loader-content">
+        <div class="loader-svg-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="brand-loader-svg" width="160" height="160">
+            <defs>
+              <!-- Light Mode Blue Gradient -->
+              <linearGradient id="htmlLoaderGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6C63FF" />
+                <stop offset="50%" stop-color="#7C5CFF" />
+                <stop offset="100%" stop-color="#5FA8FF" />
+              </linearGradient>
+              <!-- Dark Mode Luxury Gold Gradient -->
+              <linearGradient id="htmlLoaderGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F59E0B" />
+                <stop offset="50%" stop-color="#FBBF24" />
+                <stop offset="100%" stop-color="#D97706" />
+              </linearGradient>
+            </defs>
+
+            <!-- Outer Rotating Blueprint Ring -->
+            <circle cx="100" cy="100" r="88" class="spin-ring" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="8 6 16 6" opacity="0.35" />
+            
+            <!-- Blueprint Compass Ticks -->
+            <circle cx="100" cy="100" r="76" class="spin-ring-rev" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="1 11" opacity="0.25" />
+
+            <!-- Inner Reference Ring -->
+            <circle cx="100" cy="100" r="64" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="1" />
+
+            <!-- Center Emblem Group (< R/R >) -->
+            <g class="pulse-emblem">
+              <!-- Left Bracket < -->
+              <path d="M 52 80 L 36 100 L 52 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="bracket-left" />
+              
+              <!-- Right Bracket > -->
+              <path d="M 148 80 L 164 100 L 148 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="bracket-right" />
+
+              <!-- Left R Monogram -->
+              <path d="M 68 80 V 120 M 68 80 H 84 C 92 80 92 97 84 97 H 68 M 80 97 L 90 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="monogram-r" />
+
+              <!-- Center Blueprint Slash / -->
+              <path d="M 103 76 L 95 124" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35" />
+
+              <!-- Right R Monogram -->
+              <path d="M 108 80 V 120 M 108 80 H 124 C 132 80 132 97 124 97 H 108 M 120 97 L 130 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="monogram-r" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Luxury Status Text -->
+        <div class="loader-status">
+          <span class="status-dot"></span>
+          <span class="status-text">INITIALIZING ARCHITECTURE</span>
+        </div>
+      </div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

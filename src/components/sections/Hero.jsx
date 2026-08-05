@@ -52,6 +52,7 @@ export const Hero = () => {
           loop
           muted
           playsInline
+          preload="metadata"
           className="w-full h-full object-cover opacity-65 dark:opacity-65 transition-opacity duration-500 scale-105"
         >
           <source src="/images/hero-animation.mp4" type="video/mp4" />

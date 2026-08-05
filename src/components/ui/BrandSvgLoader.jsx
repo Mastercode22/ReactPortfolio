@@ -1,0 +1,133 @@
+import React from 'react';
+import { useTheme } from '../../context/ThemeContext';
+
+export const BrandSvgLoader = ({ size = 160, statusText = "INITIALIZING ARCHITECTURE", className = "" }) => {
+  const { isDark } = useTheme();
+
+  return (
+    <div className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#F6F7FB] dark:bg-[#090B13] text-[#1B2430] dark:text-[#F8FAFC] transition-all duration-400 select-none ${className}`}>
+      <div className="flex flex-col items-center gap-7">
+        <div className="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 200 200"
+            width={size}
+            height={size}
+            className="w-auto h-auto max-w-[80vw] max-h-[80vh]"
+          >
+            <defs>
+              {/* Light Mode Blue Gradient */}
+              <linearGradient id="reactLoaderGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#6C63FF" />
+                <stop offset="50%" stopColor="#7C5CFF" />
+                <stop offset="100%" stopColor="#5FA8FF" />
+              </linearGradient>
+              {/* Dark Mode Gold Gradient */}
+              <linearGradient id="reactLoaderGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#F59E0B" />
+                <stop offset="50%" stopColor="#FBBF24" />
+                <stop offset="100%" stopColor="#D97706" />
+              </linearGradient>
+            </defs>
+
+            {/* Outer Rotating Blueprint Ring */}
+            <circle
+              cx="100"
+              cy="100"
+              r="88"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeDasharray="8 6 16 6"
+              className="origin-center animate-[loaderSpin_14s_linear_infinite] opacity-35"
+            />
+
+            {/* Blueprint Compass Ticks */}
+            <circle
+              cx="100"
+              cy="100"
+              r="76"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeDasharray="1 11"
+              className="origin-center animate-[loaderSpinRev_22s_linear_infinite] opacity-25"
+            />
+
+            {/* Inner Reference Ring */}
+            <circle
+              cx="100"
+              cy="100"
+              r="64"
+              fill="none"
+              stroke="currentColor"
+              strokeOpacity="0.15"
+              strokeWidth="1"
+            />
+
+            {/* Center Emblem Group (< R/R >) */}
+            <g className="origin-center animate-[loaderPulse_2.5s_ease-in-out_infinite]">
+              {/* Left Bracket < */}
+              <path
+                d="M 52 80 L 36 100 L 52 120"
+                fill="none"
+                stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              {/* Right Bracket > */}
+              <path
+                d="M 148 80 L 164 100 L 148 120"
+                fill="none"
+                stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              {/* Left R Monogram */}
+              <path
+                d="M 68 80 V 120 M 68 80 H 84 C 92 80 92 97 84 97 H 68 M 80 97 L 90 120"
+                fill="none"
+                stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+
+              {/* Center Blueprint Slash / */}
+              <path
+                d="M 103 76 L 95 124"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                className="opacity-35"
+              />
+
+              {/* Right R Monogram */}
+              <path
+                d="M 108 80 V 120 M 108 80 H 124 C 132 80 132 97 124 97 H 108 M 120 97 L 130 120"
+                fill="none"
+                stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </svg>
+        </div>
+
+        {/* Status Text */}
+        <div className="flex items-center gap-2.5 tracking-[0.25em] text-[11px] font-bold uppercase text-[#64748B] dark:text-[#94A3B8]">
+          <span className="w-1.75 h-1.75 rounded-full bg-[#6C63FF] dark:bg-[#F59E0B] animate-pulse shadow-[0_0_10px_rgba(108,99,255,0.6)] dark:shadow-[0_0_10px_rgba(245,158,11,0.6)]" />
+          <span>{statusText}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BrandSvgLoader;
