@@ -21,19 +21,23 @@ export const LoadingProvider = ({ children }) => {
         console.warn('Font loading check skipped:', e);
       }
 
-      // 2. Preload Critical Hero Image
-      const preloadHeroImage = new Promise((resolve) => {
-        const img = new Image();
-        img.src = '/images/ecom.jpg';
-        if (img.complete) {
-          resolve();
-        } else {
-          img.onload = () => resolve();
-          img.onerror = () => resolve(); // Resolve anyway on error to prevent blocking indefinitely
-        }
-      });
+      // 2. Preload Critical Assets (Logo & Hero Image)
+      const preloadAssets = Promise.all([
+        new Promise((resolve) => {
+          const img = new Image();
+          img.src = '/logo.png';
+          if (img.complete) resolve();
+          else { img.onload = () => resolve(); img.onerror = () => resolve(); }
+        }),
+        new Promise((resolve) => {
+          const img = new Image();
+          img.src = '/images/ecom.jpg';
+          if (img.complete) resolve();
+          else { img.onload = () => resolve(); img.onerror = () => resolve(); }
+        }),
+      ]);
 
-      await preloadHeroImage;
+      await preloadAssets;
 
       // 3. Ensure minimum display time for smooth visual experience (prevent instant flicker)
       const elapsedTime = performance.now() - startTime;

@@ -1,13 +1,15 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
-export const BrandSvgLoader = ({ size = 160, statusText = "INITIALIZING ARCHITECTURE", className = "" }) => {
+export const BrandSvgLoader = ({ size = 170, statusText = "INITIALIZING ARCHITECTURE", className = "" }) => {
   const { isDark } = useTheme();
 
   return (
     <div className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#F6F7FB] dark:bg-[#090B13] text-[#1B2430] dark:text-[#F8FAFC] transition-all duration-400 select-none ${className}`}>
       <div className="flex flex-col items-center gap-7">
-        <div className="relative">
+        {/* Loader Core Wrapper */}
+        <div className="relative flex items-center justify-center w-[170px] h-[170px]">
+          {/* Blueprint SVG Rings & Framing Brackets */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 200 200"
@@ -65,11 +67,11 @@ export const BrandSvgLoader = ({ size = 160, statusText = "INITIALIZING ARCHITEC
               strokeWidth="1"
             />
 
-            {/* Center Emblem Group (< R/R >) */}
+            {/* Developer Brackets < > Framing Logo */}
             <g className="origin-center animate-[loaderPulse_2.5s_ease-in-out_infinite]">
               {/* Left Bracket < */}
               <path
-                d="M 52 80 L 36 100 L 52 120"
+                d="M 44 80 L 28 100 L 44 120"
                 fill="none"
                 stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
                 strokeWidth="4"
@@ -79,45 +81,34 @@ export const BrandSvgLoader = ({ size = 160, statusText = "INITIALIZING ARCHITEC
 
               {/* Right Bracket > */}
               <path
-                d="M 148 80 L 164 100 L 148 120"
+                d="M 156 80 L 172 100 L 156 120"
                 fill="none"
                 stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
                 strokeWidth="4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-
-              {/* Left R Monogram */}
-              <path
-                d="M 68 80 V 120 M 68 80 H 84 C 92 80 92 97 84 97 H 68 M 80 97 L 90 120"
-                fill="none"
-                stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
-                strokeWidth="3.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-
-              {/* Center Blueprint Slash / */}
-              <path
-                d="M 103 76 L 95 124"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                className="opacity-35"
-              />
-
-              {/* Right R Monogram */}
-              <path
-                d="M 108 80 V 120 M 108 80 H 124 C 132 80 132 97 124 97 H 108 M 120 97 L 130 120"
-                fill="none"
-                stroke={isDark ? "url(#reactLoaderGradDark)" : "url(#reactLoaderGradLight)"}
-                strokeWidth="3.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
             </g>
           </svg>
+
+          {/* User's Official Logo Image in Center */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            {/* Glowing Aura */}
+            <div
+              className={`absolute w-20 h-20 rounded-full blur-xl opacity-70 animate-pulse ${
+                isDark ? 'bg-[#F59E0B]/30' : 'bg-[#6C63FF]/25'
+              }`}
+            />
+            <img
+              src="/logo.png"
+              alt="Rapid Render Logo"
+              className={`relative z-10 max-w-[80px] max-h-[80px] w-auto h-auto object-contain animate-[loaderPulse_2.5s_ease-in-out_infinite] ${
+                isDark
+                  ? 'drop-shadow-[0_0_18px_rgba(245,158,11,0.7)]'
+                  : 'drop-shadow-[0_0_14px_rgba(108,99,255,0.5)]'
+              }`}
+            />
+          </div>
         </div>
 
         {/* Status Text */}

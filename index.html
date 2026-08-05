@@ -16,12 +16,13 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Rapid Render Quarshie — Principal Digital Architect & Design Engineer</title>
     <meta name="description" content="A world-class digital portfolio blending Neumorphism, Glassmorphism, and Apple-grade minimalism. Interactive web engineering and high-end UI design." />
     
-    <!-- Preload Critical Hero Image & Fonts -->
+    <!-- Preload Critical Logo, Hero Image & Fonts -->
+    <link rel="preload" as="image" href="/logo.png" fetchpriority="high" />
     <link rel="preload" as="image" href="/images/ecom.jpg" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,8 +54,7 @@
       }
 
       html.dark #app-loader .bracket-left,
-      html.dark #app-loader .bracket-right,
-      html.dark #app-loader .monogram-r {
+      html.dark #app-loader .bracket-right {
         stroke: url(#htmlLoaderGradDark) !important;
       }
 
@@ -75,7 +75,7 @@
       }
       @keyframes loaderPulse {
         0%, 100% { opacity: 0.9; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.025); }
+        50% { opacity: 1; transform: scale(1.04); }
       }
       @keyframes dotPulse {
         0%, 100% { opacity: 0.35; transform: scale(0.8); }
@@ -94,6 +94,21 @@
         transform-origin: center;
         animation: loaderPulse 2.5s ease-in-out infinite;
       }
+      #app-loader .logo-img-animated {
+        animation: loaderPulse 2.5s ease-in-out infinite;
+        filter: drop-shadow(0 0 14px rgba(108, 99, 255, 0.5));
+      }
+      html.dark #app-loader .logo-img-animated {
+        filter: drop-shadow(0 0 18px rgba(245, 158, 11, 0.7));
+      }
+
+      #app-loader .logo-glow-aura {
+        background: radial-gradient(circle, rgba(108, 99, 255, 0.25) 0%, transparent 70%);
+      }
+      html.dark #app-loader .logo-glow-aura {
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 70%);
+      }
+
       #app-loader .status-dot {
         width: 7px;
         height: 7px;
@@ -128,15 +143,24 @@
       html.dark #app-loader .loader-status {
         color: #94A3B8;
       }
+
+      #app-loader .loader-svg-wrapper {
+        position: relative;
+        width: 170px;
+        height: 170px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     </style>
   </head>
   <body class="bg-[#F6F7FB] dark:bg-[#090B13] text-[#1B2430] dark:text-[#F8FAFC] font-sans antialiased transition-colors duration-300 overflow-x-hidden selection:bg-[#6C63FF]/20 selection:text-[#6C63FF]">
     
-    <!-- Phase 1 — Instant HTML Splash Loader -->
+    <!-- Phase 1 — Instant HTML Splash Loader with User Logo -->
     <div id="app-loader" aria-label="Initializing Rapid Render Architecture" role="status">
       <div class="loader-content">
         <div class="loader-svg-wrapper">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="brand-loader-svg" width="160" height="160">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="brand-loader-svg" width="170" height="170">
             <defs>
               <!-- Light Mode Blue Gradient -->
               <linearGradient id="htmlLoaderGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -161,24 +185,21 @@
             <!-- Inner Reference Ring -->
             <circle cx="100" cy="100" r="64" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="1" />
 
-            <!-- Center Emblem Group (< R/R >) -->
+            <!-- Developer Brackets < > Framing Logo -->
             <g class="pulse-emblem">
               <!-- Left Bracket < -->
-              <path d="M 52 80 L 36 100 L 52 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="bracket-left" />
+              <path d="M 44 80 L 28 100 L 44 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="bracket-left" />
               
               <!-- Right Bracket > -->
-              <path d="M 148 80 L 164 100 L 148 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="bracket-right" />
-
-              <!-- Left R Monogram -->
-              <path d="M 68 80 V 120 M 68 80 H 84 C 92 80 92 97 84 97 H 68 M 80 97 L 90 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="monogram-r" />
-
-              <!-- Center Blueprint Slash / -->
-              <path d="M 103 76 L 95 124" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35" />
-
-              <!-- Right R Monogram -->
-              <path d="M 108 80 V 120 M 108 80 H 124 C 132 80 132 97 124 97 H 108 M 120 97 L 130 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="monogram-r" />
+              <path d="M 156 80 L 172 100 L 156 120" fill="none" stroke="url(#htmlLoaderGradLight)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="bracket-right" />
             </g>
           </svg>
+
+          <!-- User's Official Logo Image in Center -->
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+            <div class="logo-glow-aura" style="position: absolute; width: 75px; height: 75px; border-radius: 50%;"></div>
+            <img src="/logo.png" alt="Rapid Render Logo" class="logo-img-animated" style="position: relative; z-index: 10; max-width: 80px; max-height: 80px; width: auto; height: auto; object-fit: contain;" />
+          </div>
         </div>
 
         <!-- Luxury Status Text -->
