@@ -34,6 +34,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          security: loose
           local-dir: ./frontend/dist/
           server-dir: /htdocs/
           state-name: .ftp-deploy-sync-frontend.json
@@ -44,6 +47,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          security: loose
           local-dir: ./backend/
           server-dir: /htdocs/backend/
           state-name: .ftp-deploy-sync-backend.json
