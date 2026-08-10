@@ -505,7 +505,7 @@ if (
 
 if (
     $method === 'POST' &&
-    $uri === '/contact/message'
+    ($uri === '/contact/message' || $uri === '/messages')
 ) {
     (new ContactController($db))->postMessage();
     exit;
@@ -1031,29 +1031,75 @@ if (strpos($uri, '/admin') === 0) {
 
     if (
         $method === 'GET' &&
-        $uri === '/admin/messages'
+        ($uri === '/admin/messages' || $uri === '/messages')
     ) {
         (new ContactController($db))->adminGetMessages();
         exit;
     }
 
     if (
-        $m = matchRoute(
-            'PUT',
-            $uri,
-            '/admin/messages/{id}/read'
-        )
+        $method === 'GET' &&
+        ($uri === '/admin/messages/stats' || $uri === '/messages/stats')
+    ) {
+        (new ContactController($db))->adminGetStats();
+        exit;
+    }
+
+    if (
+        ($m = matchRoute('GET', $uri, '/admin/messages/{id}')) ||
+        ($m = matchRoute('GET', $uri, '/messages/{id}'))
+    ) {
+        (new ContactController($db))->adminGetOneMessage((int) $m['id']);
+        exit;
+    }
+
+    if (
+        ($m = matchRoute('PUT', $uri, '/admin/messages/{id}/read')) ||
+        ($m = matchRoute('PATCH', $uri, '/admin/messages/{id}/read')) ||
+        ($m = matchRoute('PUT', $uri, '/messages/{id}/read')) ||
+        ($m = matchRoute('PATCH', $uri, '/messages/{id}/read'))
     ) {
         (new ContactController($db))->adminMarkRead((int) $m['id']);
         exit;
     }
 
     if (
-        $m = matchRoute(
-            'DELETE',
-            $uri,
-            '/admin/messages/{id}'
-        )
+        ($m = matchRoute('PUT', $uri, '/admin/messages/{id}/status')) ||
+        ($m = matchRoute('PATCH', $uri, '/admin/messages/{id}/status')) ||
+        ($m = matchRoute('PUT', $uri, '/messages/{id}/status')) ||
+        ($m = matchRoute('PATCH', $uri, '/messages/{id}/status'))
+    ) {
+        (new ContactController($db))->adminUpdateStatus((int) $m['id']);
+        exit;
+    }
+
+    if (
+        ($m = matchRoute('GET', $uri, '/admin/messages/{id}/replies')) ||
+        ($m = matchRoute('GET', $uri, '/messages/{id}/replies'))
+    ) {
+        (new ContactController($db))->adminGetReplies((int) $m['id']);
+        exit;
+    }
+
+    if (
+        ($m = matchRoute('POST', $uri, '/admin/messages/{id}/replies/visitor')) ||
+        ($m = matchRoute('POST', $uri, '/messages/{id}/replies/visitor'))
+    ) {
+        (new ContactController($db))->adminLogVisitorReply((int) $m['id']);
+        exit;
+    }
+
+    if (
+        ($m = matchRoute('POST', $uri, '/admin/messages/{id}/reply')) ||
+        ($m = matchRoute('POST', $uri, '/messages/{id}/reply'))
+    ) {
+        (new ContactController($db))->adminReplyMessage((int) $m['id']);
+        exit;
+    }
+
+    if (
+        ($m = matchRoute('DELETE', $uri, '/admin/messages/{id}')) ||
+        ($m = matchRoute('DELETE', $uri, '/messages/{id}'))
     ) {
         (new ContactController($db))->adminDeleteMessage((int) $m['id']);
         exit;

@@ -1,15 +1,22 @@
 <?php
-// Global CORS + JSON headers — loaded before routing
-$allowedOrigins = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173', 'http://127.0.0.1:3000'];
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+require_once __DIR__ . '/../helpers/EnvLoader.php';
+EnvLoader::load();
 
-if (in_array($origin, $allowedOrigins)) {
-    header("Access-Control-Allow-Origin: $origin");
-} else {
-    header('Access-Control-Allow-Origin: *');
+// Dynamic CORS configuration
+$frontendUrl = EnvLoader::get('FRONTEND_URL', '');
+$allowedOrigins = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173', 'http://127.0.0.1:3000'];
+if (!empty($frontendUrl)) {
+    $allowedOrigins[] = rtrim($frontendUrl, '/');
 }
 
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, $allowedOrigins) || empty($origin)) {
+    header("Access-Control-Allow-Origin: " . ($origin ?: '*'));
+} else {
+    header("Access-Control-Allow-Origin: $origin");
+}
+
+header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json; charset=utf-8');

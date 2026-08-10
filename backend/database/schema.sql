@@ -345,14 +345,21 @@ CREATE TABLE IF NOT EXISTS `media` (
 
 -- ─── Contact Messages ───────────────────────────────────────
 CREATE TABLE IF NOT EXISTS `contact_messages` (
-  `id`         INT AUTO_INCREMENT PRIMARY KEY,
-  `name`       VARCHAR(255) NOT NULL,
-  `email`      VARCHAR(255) NOT NULL,
-  `subject`    VARCHAR(255) DEFAULT NULL,
-  `message`    TEXT NOT NULL,
-  `status`     ENUM('unread','read','replied') NOT NULL DEFAULT 'unread',
-  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  INDEX `idx_status` (`status`)
+  `id`           INT AUTO_INCREMENT PRIMARY KEY,
+  `name`         VARCHAR(150) NOT NULL,
+  `email`        VARCHAR(255) NOT NULL,
+  `subject`      VARCHAR(255) DEFAULT NULL,
+  `message`      TEXT NOT NULL,
+  `phone`        VARCHAR(50) DEFAULT NULL,
+  `company`      VARCHAR(150) DEFAULT NULL,
+  `project_type` VARCHAR(100) DEFAULT NULL,
+  `status`       VARCHAR(30) NOT NULL DEFAULT 'unread',
+  `is_read`      TINYINT(1) NOT NULL DEFAULT 0,
+  `created_at`   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at`   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX `idx_status` (`status`),
+  INDEX `idx_is_read` (`is_read`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;
+

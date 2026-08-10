@@ -3,15 +3,27 @@ import { motion } from 'framer-motion';
 import SectionHeader from '../ui/SectionHeader';
 import GlassCard from '../ui/GlassCard';
 import NeumorphicButton from '../ui/NeumorphicButton';
-import { Mail, MapPin, Phone, Send, CheckCircle2, Clock, MessageSquare, Loader2, ExternalLink, Navigation } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, CheckCircle2, Clock, MessageSquare, Loader2, ExternalLink, Navigation, AlertCircle, Building2, Briefcase } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { getContact, postContactMessage } from '../../services/contactService';
 
 export const Contact = () => {
   const { isDark } = useTheme();
-  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+    phone: '',
+    company: '',
+    project_type: '',
+    website: '' // Spam Honeypot Field
+  });
+  
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [apiError, setApiError] = useState(null);
   const [contactData, setContactData] = useState(null);
 
   useEffect(() => {
@@ -24,23 +36,71 @@ export const Contact = () => {
 
   const mapAddressUrl = contactData?.google_maps_url || "https://www.google.com/maps/place/Anbert+Garden/@5.6121596,-0.1320006,17z";
 
+  const validateForm = () => {
+    const errs = {};
+    if (!formData.name.trim()) {
+      errs.name = 'Full Name is required';
+    } else if (formData.name.trim().length < 2) {
+      errs.name = 'Name must be at least 2 characters';
+    }
+
+    if (!formData.email.trim()) {
+      errs.email = 'Email address is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errs.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.subject.trim()) {
+      errs.subject = 'Subject is required';
+    }
+
+    if (!formData.message.trim()) {
+      errs.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      errs.message = 'Message must be at least 10 characters long';
+    }
+
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setApiError(null);
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
     try {
       await postContactMessage(formData);
       setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setSubmitted(false), 5000);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        phone: '',
+        company: '',
+        project_type: '',
+        website: ''
+      });
+      setErrors({});
     } catch (err) {
       console.error('Failed to send message:', err);
+      setApiError(err.message || 'Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: null });
+    }
   };
 
   return (
@@ -70,7 +130,7 @@ export const Contact = () => {
                   Direct Contact Information
                 </h3>
                 <p className="text-sm text-[#667085] dark:text-[#CBD5E1] leading-relaxed">
-                  I typically respond within 24 hours. For urgent project inquiries, reach out via direct email or schedule a consultation.
+                  I typically respond within 24 hours. For urgent project inquiries, reach out via direct email or phone.
                 </p>
               </div>
 
@@ -104,7 +164,7 @@ export const Contact = () => {
             </GlassCard>
           </div>
 
-          {/* Right Column: Neumorphic Contact Form */}
+          {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
             <GlassCard neumorphic gradientBorder className="p-8 sm:p-10 relative">
 
@@ -114,51 +174,133 @@ export const Contact = () => {
 
               {submitted ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="p-8 rounded-3xl text-center space-y-4 bg-emerald-500/10 border border-emerald-500/30"
                 >
                   <CheckCircle2 className="w-16 h-16 mx-auto text-emerald-500 animate-bounce" />
-                  <h4 className="text-2xl font-extrabold text-emerald-500">Message Transmitted Successfully!</h4>
-                  <p className="text-sm text-[#667085] dark:text-[#CBD5E1] max-w-md mx-auto">
-                    Thank you for reaching out. Your project details have been received and I will contact you shortly.
+                  <h4 className="text-2xl font-extrabold text-emerald-500">Message Received!</h4>
+                  <p className="text-sm text-[#667085] dark:text-[#CBD5E1] max-w-md mx-auto leading-relaxed">
+                    Thank you for reaching out. Your message has been received. I'll get back to you as soon as possible.
                   </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="px-6 py-2.5 rounded-xl font-bold text-xs bg-emerald-500 text-white hover:bg-emerald-600 transition-colors shadow-md"
+                  >
+                    Send Another Message
+                  </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+
+                  {/* Anti-Spam Honeypot (Hidden from real users) */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex="-1"
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
+
+                  {apiError && (
+                    <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center gap-3 text-xs font-bold text-rose-500">
+                      <AlertCircle className="w-5 h-5 shrink-0" />
+                      <span>{apiError}</span>
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Name Input */}
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-wider text-[#1B2430] dark:text-[#F8FAFC]">
-                        Your Name *
+                        Full Name *
                       </label>
                       <input
                         type="text"
                         name="name"
-                        required
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
                         className={`w-full px-4 py-3.5 rounded-2xl text-sm font-medium outline-none transition-all ${
+                          errors.name ? 'border-2 border-rose-500' : ''
+                        } ${
                           isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
                         }`}
                       />
+                      {errors.name && <p className="text-xs font-bold text-rose-500 mt-1">{errors.name}</p>}
                     </div>
 
                     {/* Email Input */}
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-wider text-[#1B2430] dark:text-[#F8FAFC]">
-                        Your Email *
+                        Email Address *
                       </label>
                       <input
                         type="email"
                         name="email"
-                        required
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@company.com"
                         className={`w-full px-4 py-3.5 rounded-2xl text-sm font-medium outline-none transition-all ${
+                          errors.email ? 'border-2 border-rose-500' : ''
+                        } ${
+                          isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
+                        }`}
+                      />
+                      {errors.email && <p className="text-xs font-bold text-rose-500 mt-1">{errors.email}</p>}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {/* Phone (Optional) */}
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-[#1B2430] dark:text-[#F8FAFC] flex items-center gap-1">
+                        <Phone className="w-3.5 h-3.5 text-[#6C63FF]" /> Phone
+                      </label>
+                      <input
+                        type="text"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+1 (555) 000-0000"
+                        className={`w-full px-4 py-3 rounded-2xl text-sm font-medium outline-none transition-all ${
+                          isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
+                        }`}
+                      />
+                    </div>
+
+                    {/* Company (Optional) */}
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-[#1B2430] dark:text-[#F8FAFC] flex items-center gap-1">
+                        <Building2 className="w-3.5 h-3.5 text-[#6C63FF]" /> Company
+                      </label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Acme Corp"
+                        className={`w-full px-4 py-3 rounded-2xl text-sm font-medium outline-none transition-all ${
+                          isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
+                        }`}
+                      />
+                    </div>
+
+                    {/* Project Type (Optional) */}
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-[#1B2430] dark:text-[#F8FAFC] flex items-center gap-1">
+                        <Briefcase className="w-3.5 h-3.5 text-[#6C63FF]" /> Project Type
+                      </label>
+                      <input
+                        type="text"
+                        name="project_type"
+                        value={formData.project_type}
+                        onChange={handleChange}
+                        placeholder="Web App / API"
+                        className={`w-full px-4 py-3 rounded-2xl text-sm font-medium outline-none transition-all ${
                           isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
                         }`}
                       />
@@ -168,18 +310,21 @@ export const Contact = () => {
                   {/* Subject Input */}
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-wider text-[#1B2430] dark:text-[#F8FAFC]">
-                      Subject / Project Type
+                      Subject *
                     </label>
                     <input
                       type="text"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="e.g. Enterprise React SPA / UI Design System"
+                      placeholder="e.g. Enterprise Web Development Inquiry"
                       className={`w-full px-4 py-3.5 rounded-2xl text-sm font-medium outline-none transition-all ${
+                        errors.subject ? 'border-2 border-rose-500' : ''
+                      } ${
                         isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
                       }`}
                     />
+                    {errors.subject && <p className="text-xs font-bold text-rose-500 mt-1">{errors.subject}</p>}
                   </div>
 
                   {/* Message Input */}
@@ -190,14 +335,16 @@ export const Contact = () => {
                     <textarea
                       name="message"
                       rows={5}
-                      required
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Describe your project goals, timelines, and technical preferences..."
                       className={`w-full px-4 py-3.5 rounded-2xl text-sm font-medium outline-none transition-all resize-none ${
+                        errors.message ? 'border-2 border-rose-500' : ''
+                      } ${
                         isDark ? 'neu-pressed-dark text-white placeholder-slate-500 focus:border-[#7C5CFF]' : 'neu-pressed-light text-slate-800 placeholder-slate-400 focus:border-[#6C63FF]'
                       }`}
                     />
+                    {errors.message && <p className="text-xs font-bold text-rose-500 mt-1">{errors.message}</p>}
                   </div>
 
                   {/* Submit Button */}
@@ -208,7 +355,7 @@ export const Contact = () => {
                     className="w-full py-4 text-base"
                     icon={loading ? Loader2 : Send}
                   >
-                    {loading ? 'Transmitting Message...' : 'Send Message Now'}
+                    {loading ? 'Sending...' : 'Send Message Now'}
                   </NeumorphicButton>
 
                 </form>

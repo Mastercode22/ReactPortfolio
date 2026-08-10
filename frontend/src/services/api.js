@@ -1,6 +1,8 @@
-export const API_BASE = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
-  ? '/api'
-  : '/backend/api';
+export const API_BASE = import.meta.env.VITE_API_URL || (
+  (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'))
+    ? '/api'
+    : '/backend/api'
+);
 export const API_BASE_URL = API_BASE;
 
 export async function apiFetch(endpoint, options = {}) {

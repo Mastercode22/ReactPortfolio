@@ -12,10 +12,10 @@ class DashboardController {
         $totalTestimonials = (int)$this->db->query('SELECT COUNT(*) FROM testimonials')->fetchColumn();
         $cvDownloads       = (int)$this->db->query('SELECT COUNT(*) FROM cv_downloads')->fetchColumn();
         $mediaFiles        = (int)$this->db->query('SELECT COUNT(*) FROM media')->fetchColumn();
-        $unreadMessages    = (int)$this->db->query('SELECT COUNT(*) FROM contact_messages WHERE status = "unread"')->fetchColumn();
+        $unreadMessages    = (int)$this->db->query('SELECT COUNT(*) FROM contact_messages WHERE is_read = 0 OR status = "unread" OR status = "new"')->fetchColumn();
         $totalMessages     = (int)$this->db->query('SELECT COUNT(*) FROM contact_messages')->fetchColumn();
 
-        $recentMessages    = $this->db->query('SELECT id, name, email, subject, status, created_at FROM contact_messages ORDER BY id DESC LIMIT 5')->fetchAll();
+        $recentMessages    = $this->db->query('SELECT id, name, email, subject, message, status, is_read, created_at FROM contact_messages ORDER BY id DESC LIMIT 5')->fetchAll();
 
         Response::json(true, 'Dashboard Stats', [
             'total_projects'     => $totalProjects,

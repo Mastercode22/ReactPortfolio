@@ -136,18 +136,25 @@ const AdminDashboard = () => {
             {messages.length > 0 ? (
               <div className="divide-y divide-slate-100 dark:divide-white/5">
                 {messages.map((msg, i) => (
-                  <div key={i} className="p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 text-slate-800 dark:text-white flex items-center justify-center shrink-0 font-bold">
-                      {msg.name?.charAt(0) || 'U'}
+                  <Link 
+                    key={i} 
+                    to="/admin/messages" 
+                    className="p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-4 block cursor-pointer group"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-[#7C5CFF]/15 text-[#7C5CFF] flex items-center justify-center shrink-0 font-bold group-hover:scale-105 transition-transform">
+                      {msg.name?.charAt(0)?.toUpperCase() || 'U'}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-medium text-slate-900 dark:text-white truncate">{msg.name}</h4>
-                        <span className="text-xs text-slate-500 dark:text-[#CBD5E1] whitespace-nowrap">{msg.created_at || msg.date}</span>
+                        <h4 className="font-bold text-slate-900 dark:text-white truncate group-hover:text-[#7C5CFF] transition-colors">{msg.name}</h4>
+                        <span className="text-xs text-slate-500 dark:text-[#CBD5E1] whitespace-nowrap">
+                          {msg.created_at ? new Date(String(msg.created_at).replace(' ', 'T')).toLocaleDateString() : msg.date || ''}
+                        </span>
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-[#CBD5E1] truncate">{msg.subject}</p>
+                      <p className="text-sm font-medium text-slate-600 dark:text-[#CBD5E1] truncate">{msg.subject || 'No Subject'}</p>
+                      {msg.message && <p className="text-xs text-slate-400 truncate mt-0.5">{msg.message}</p>}
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             ) : (
