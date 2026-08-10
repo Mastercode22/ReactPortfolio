@@ -82,24 +82,33 @@ export const Footer = () => {
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
               {socials.length > 0 ? (
-                socials.map((social) => (
-                  <motion.a
-                    key={social.id}
-                    href={social.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    whileHover={{ y: -3, scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={social.platform}
-                    className={`p-3 rounded-2xl transition-all ${
-                      isDark
-                        ? "neu-flat-dark text-[#CBD5E1] hover:text-[#7C5CFF]"
-                        : "neu-flat-light text-[#667085] hover:text-[#6C63FF]"
-                    }`}
-                  >
-                    <Globe className="w-4 h-4" />
-                  </motion.a>
-                ))
+                socials.map((social) => {
+                  const name = (social.platform || social.name || social.icon || '').toLowerCase();
+                  let IconComponent = Globe;
+                  if (name.includes('git')) IconComponent = Github;
+                  else if (name.includes('link')) IconComponent = Linkedin;
+                  else if (name.includes('twit') || name.includes('x')) IconComponent = Twitter;
+                  else if (name.includes('mail') || name.includes('email')) IconComponent = Mail;
+
+                  return (
+                    <motion.a
+                      key={social.id}
+                      href={social.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      whileHover={{ y: -3, scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      aria-label={social.platform || social.name}
+                      className={`p-3 rounded-2xl transition-all ${
+                        isDark
+                          ? "neu-flat-dark text-[#CBD5E1] hover:text-[#7C5CFF]"
+                          : "neu-flat-light text-[#667085] hover:text-[#6C63FF]"
+                      }`}
+                    >
+                      <IconComponent className="w-4 h-4" />
+                    </motion.a>
+                  );
+                })
               ) : (
                 [
                   { icon: Github, href: "https://github.com/quarshie395", label: "GitHub" },
