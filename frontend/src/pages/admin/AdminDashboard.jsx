@@ -61,14 +61,14 @@ const AdminDashboard = () => {
   }, [token, showToast, logout]);
 
   const statCards = stats ? [
-    { label: 'Total Projects', value: stats.totalProjects, icon: '📁', bg: 'bg-blue-400/10' },
-    { label: 'Published Projects', value: stats.publishedProjects, icon: '🚀', bg: 'bg-green-400/10' },
-    { label: 'Services', value: stats.services, icon: '🛠️', bg: 'bg-purple-400/10' },
-    { label: 'Technologies', value: stats.technologies, icon: '💻', bg: 'bg-yellow-400/10' },
-    { label: 'Testimonials', value: stats.testimonials, icon: '💬', bg: 'bg-pink-400/10' },
-    { label: 'CV Downloads', value: stats.cvDownloads, icon: '📄', bg: 'bg-emerald-400/10' },
-    { label: 'Media Files', value: stats.mediaFiles, icon: '🖼️', bg: 'bg-orange-400/10' },
-    { label: 'Unread Messages', value: stats.unreadMessages, icon: '✉️', bg: 'bg-red-400/10' },
+    { label: 'Total Projects', value: stats.totalProjects, icon: '📁', bg: 'bg-blue-400/10', link: '/admin/projects' },
+    { label: 'Published Projects', value: stats.publishedProjects, icon: '🚀', bg: 'bg-green-400/10', link: '/admin/projects' },
+    { label: 'Services', value: stats.services, icon: '🛠️', bg: 'bg-purple-400/10', link: '/admin/services' },
+    { label: 'Technologies', value: stats.technologies, icon: '💻', bg: 'bg-yellow-400/10', link: '/admin/technologies' },
+    { label: 'Testimonials', value: stats.testimonials, icon: '💬', bg: 'bg-pink-400/10', link: '/admin/testimonials' },
+    { label: 'CV Downloads', value: stats.cvDownloads, icon: '📄', bg: 'bg-emerald-400/10', link: '/admin/cv' },
+    { label: 'Media Files', value: stats.mediaFiles, icon: '🖼️', bg: 'bg-orange-400/10', link: '/admin/media' },
+    { label: 'Unread Messages', value: stats.unreadMessages, icon: '✉️', bg: 'bg-red-400/10', link: '/admin/messages' },
   ] : [];
 
   if (isLoading) {
@@ -84,17 +84,21 @@ const AdminDashboard = () => {
       {/* Stats Grid - 4 Columns x 2 Rows */}
       <div className="grid grid-cols-4 gap-2 sm:gap-6">
         {statCards.map((stat, index) => (
-          <div key={index} className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-xl sm:rounded-2xl p-2 sm:p-6 shadow-xl hover:border-[#7C5CFF]/40 transition-colors">
+          <Link
+            key={index}
+            to={stat.link}
+            className="block bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-xl sm:rounded-2xl p-2 sm:p-6 shadow-xl hover:border-[#7C5CFF] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer group"
+          >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
               <div className="min-w-0 flex-1">
-                <p className="text-slate-600 dark:text-[#CBD5E1] text-[10px] sm:text-sm font-medium leading-tight truncate" title={stat.label}>{stat.label}</p>
+                <p className="text-slate-600 dark:text-[#CBD5E1] text-[10px] sm:text-sm font-medium leading-tight truncate group-hover:text-[#7C5CFF] transition-colors" title={stat.label}>{stat.label}</p>
                 <h3 className="text-base sm:text-3xl font-bold text-slate-900 dark:text-white mt-0.5 sm:mt-1">{stat.value}</h3>
               </div>
-              <div className={`w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center text-xs sm:text-2xl shrink-0 self-start sm:self-center ${stat.bg}`}>
+              <div className={`w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center text-xs sm:text-2xl shrink-0 self-start sm:self-center ${stat.bg} group-hover:scale-110 transition-transform`}>
                 {stat.icon}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
