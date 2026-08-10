@@ -218,6 +218,11 @@ if ($uri !== '/' && substr($uri, -1) === '/') {
 
 $method = strtoupper($_SERVER['REQUEST_METHOD']);
 
+// Support Method Override header for hosts like InfinityFree that block PUT/DELETE
+if ($method === 'POST' && isset($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'])) {
+    $method = strtoupper($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE']);
+}
+
 
 /*
 |--------------------------------------------------------------------------

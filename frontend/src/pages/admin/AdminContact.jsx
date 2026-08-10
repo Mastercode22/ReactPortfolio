@@ -236,7 +236,7 @@ export const AdminContact = () => {
             {
               key: 'is_active',
               label: 'Status',
-              render: (row) => (
+              render: (_, row) => (
                 <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${row.is_active ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/20 text-rose-600 dark:text-rose-400'}`}>
                   {row.is_active ? 'Active' : 'Hidden'}
                 </span>
@@ -244,16 +244,8 @@ export const AdminContact = () => {
             },
           ]}
           data={socialLinks}
-          actions={(row) => (
-            <div className="flex items-center gap-2">
-              <button onClick={() => handleOpenSocialModal(row)} className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-                <Edit className="w-4 h-4" />
-              </button>
-              <button onClick={() => setDeleteId(row.id)} className="p-1.5 text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300">
-                <Trash2 className="w-4 h-4" />
-              </button>
-            </div>
-          )}
+          onEdit={(row) => handleOpenSocialModal(row)}
+          onDelete={(row) => setDeleteId(row.id)}
         />
       </div>
 

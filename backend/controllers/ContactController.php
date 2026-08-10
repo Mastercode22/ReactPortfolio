@@ -146,12 +146,28 @@ class ContactController {
     // PUT /admin/contact/{id} (Admin Update Settings)
     public function adminUpdateSettings(int $id): void {
         $data = json_decode(file_get_contents('php://input'), true);
-        $this->db->prepare('UPDATE contact_settings SET email=?,phone=?,location=?,whatsapp=?,timezone_label=?,availability_text=?,map_embed_url=?,map_address_url=?,is_active=? WHERE id=?')
-            ->execute([
-                $data['email'] ?? null, $data['phone'] ?? null, $data['location'] ?? null, 
-                $data['whatsapp'] ?? null, $data['timezone_label'] ?? null, $data['availability_text'] ?? null, 
-                $data['map_embed_url'] ?? null, $data['map_address_url'] ?? null, $data['is_active'] ?? 1, $id
-            ]);
+
+        // Check if settings row exists in DB
+        $stmt = $this->db->prepare('SELECT COUNT(*) FROM contact_settings WHERE id = ?');
+        $stmt->execute([$id]);
+        $exists = (int)$stmt->fetchColumn() > 0;
+
+        if ($exists) {
+            $this->db->prepare('UPDATE contact_settings SET email=?,phone=?,location=?,whatsapp=?,timezone_label=?,availability_text=?,map_embed_url=?,map_address_url=?,is_active=? WHERE id=?')
+                ->execute([
+                    $data['email'] ?? null, $data['phone'] ?? null, $data['location'] ?? null, 
+                    $data['whatsapp'] ?? null, $data['timezone_label'] ?? null, $data['availability_text'] ?? null, 
+                    $data['map_embed_url'] ?? null, $data['map_address_url'] ?? null, $data['is_active'] ?? 1, $id
+                ]);
+        } else {
+            $this->db->prepare('INSERT INTO contact_settings (id, email, phone, location, whatsapp, timezone_label, availability_text, map_embed_url, map_address_url, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
+                ->execute([
+                    $id, $data['email'] ?? null, $data['phone'] ?? null, $data['location'] ?? null, 
+                    $data['whatsapp'] ?? null, $data['timezone_label'] ?? null, $data['availability_text'] ?? null, 
+                    $data['map_embed_url'] ?? null, $data['map_address_url'] ?? null, $data['is_active'] ?? 1
+                ]);
+        }
+
         Response::json(true, 'Contact settings updated');
     }
 
