@@ -35,4 +35,12 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           sudo apt-get update && sudo apt-get install -y lftp
-          lftp -e "set ftp:ssl-allow no; set net:timeout 15; set net:max-retries 3; set ftp:passive-mode true; mirror -R --verbose --exclude-glob .git* ./frontend/dist /htdocs; mirror -R --verbose --exclude-glob .git* ./backend /htdocs/backend; quit" -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER"
+          lftp -u "${FTP_USERNAME}","${FTP_PASSWORD}" "${FTP_SERVER}" << 'EOF'
+          set ftp:ssl-allow no
+          set ftp:passive-mode true
+          set net:timeout 15
+          set net:max-retries 3
+          mirror -R --verbose --exclude-glob .git* ./frontend/dist /htdocs
+          mirror -R --verbose --exclude-glob .git* ./backend /htdocs/backend
+          quit
+          EOF
