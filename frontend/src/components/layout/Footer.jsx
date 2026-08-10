@@ -105,7 +105,7 @@ export const Footer = () => {
                   { icon: Github, href: "https://github.com/quarshie395", label: "GitHub" },
                   { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
                   { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-                  { icon: Mail, href: "mailto:quarshie395@gmail.com", label: "Email" },
+                  { icon: Mail, href: "mailto:emmanuelquarshie395@gmail.com", label: "Email" },
                 ].map((social, idx) => (
                   <motion.a
                     key={idx}

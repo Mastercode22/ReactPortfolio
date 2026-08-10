@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "[![React 19](https://img.shields.io/badge/React-19.0.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)\r [![Vite](https://img.shields.io/badge/Vite-6.1.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)\r [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)\r [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.4.7-0055FF?logo=framer&logoColor=white)](https://www.framer.com/motion/)\r [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mastercode22/ReactPortfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mastercode22/ReactPortfolio/issues"
+  },
+  "homepage": "https://github.com/Mastercode22/ReactPortfolio#readme",
+  "dependencies": {
+    "basic-ftp": "^6.2.0"
+  }
+}
