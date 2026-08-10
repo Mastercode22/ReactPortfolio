@@ -1,0 +1,49 @@
+name: Deploy Portfolio to InfinityFree
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  web-deploy:
+    name: Build & Deploy via FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js 20 Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: 📦 Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: 🏗️ Build Production React App
+        working-directory: ./frontend
+        run: npm run build
+
+      - name: 🚀 Deploy Frontend (dist) to InfinityFree /htdocs
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./frontend/dist/
+          server-dir: /htdocs/
+          state-name: .ftp-deploy-sync-frontend.json
+
+      - name: 🚀 Deploy Backend API to InfinityFree /htdocs/backend
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./backend/
+          server-dir: /htdocs/backend/
+          state-name: .ftp-deploy-sync-backend.json

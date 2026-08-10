@@ -1,11 +1,17 @@
 # Dependencies
 node_modules
+frontend/node_modules
 .pnpm-store
 
 # Production build output
 dist
+frontend/dist
 dist-ssr
 build
+
+# Deployment zips & scratch
+*.zip
+scratch/
 
 # Environment & Logs
 .env
