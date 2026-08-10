@@ -135,8 +135,16 @@ class Mailer {
             $mail->send();
             return true;
         } catch (Exception $e) {
-            error_log("[Mailer Exception] Email notification failed: " . $mail->ErrorInfo);
-            return false;
+            error_log("[Mailer SMTP Warning] SMTP notification failed: " . $mail->ErrorInfo . ". Attempting fallback to native PHP mail()...");
+            try {
+                // Fallback: Clear SMTP configuration and use native mail()
+                $mail->isMail();
+                $mail->send();
+                return true;
+            } catch (Exception $ex) {
+                error_log("[Mailer Error] Both SMTP and native PHP mail() failed: " . $mail->ErrorInfo);
+                return false;
+            }
         }
     }
 
@@ -237,8 +245,16 @@ class Mailer {
             $mail->send();
             return true;
         } catch (Exception $e) {
-            error_log('[Mailer Exception] Reply email failed: ' . $mail->ErrorInfo);
-            return false;
+            error_log("[Mailer SMTP Warning] SMTP reply failed: " . $mail->ErrorInfo . ". Attempting fallback to native PHP mail()...");
+            try {
+                // Fallback: Clear SMTP configuration and use native mail()
+                $mail->isMail();
+                $mail->send();
+                return true;
+            } catch (Exception $ex) {
+                error_log("[Mailer Error] Both SMTP and native PHP mail() reply failed: " . $mail->ErrorInfo);
+                return false;
+            }
         }
     }
 }
