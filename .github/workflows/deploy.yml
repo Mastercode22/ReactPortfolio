@@ -36,10 +36,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          security: loose
           local-dir: ./frontend/dist/
           server-dir: /htdocs/
-          state-name: .ftp-deploy-sync-frontend.json
 
       - name: 🚀 Deploy Backend API to InfinityFree /htdocs/backend
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -49,7 +47,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          security: loose
           local-dir: ./backend/
           server-dir: /htdocs/backend/
-          state-name: .ftp-deploy-sync-backend.json
