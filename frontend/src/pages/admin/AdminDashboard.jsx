@@ -82,15 +82,15 @@ const AdminDashboard = () => {
   return (
     <div className="space-y-8">
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         {statCards.map((stat, index) => (
-          <div key={index} className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl hover:border-[#7C5CFF]/40 transition-colors">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[#CBD5E1] text-sm font-medium mb-1">{stat.label}</p>
-                <h3 className="text-3xl font-bold text-white">{stat.value}</h3>
+          <div key={index} className="bg-[#121620] border border-white/10 rounded-2xl p-3.5 sm:p-6 shadow-xl hover:border-[#7C5CFF]/40 transition-colors">
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0 flex-1">
+                <p className="text-[#CBD5E1] text-xs sm:text-sm font-medium mb-1 truncate">{stat.label}</p>
+                <h3 className="text-xl sm:text-3xl font-bold text-white">{stat.value}</h3>
               </div>
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl ${stat.bg}`}>
+              <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-base sm:text-2xl shrink-0 ${stat.bg}`}>
                 {stat.icon}
               </div>
             </div>
