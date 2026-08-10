@@ -121,10 +121,10 @@ export const AdminProjectEditor = () => {
   return (
     <div className="max-w-5xl mx-auto space-y-6 pb-20">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white">{isEditing ? 'Edit Project' : 'Create Project'}</h1>
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{isEditing ? 'Edit Project' : 'Create Project'}</h1>
         <div className="flex gap-3">
-          <button onClick={() => navigate('/admin/projects')} className="px-6 py-2 rounded-xl text-[#CBD5E1] hover:bg-white/5 transition-colors font-medium">Cancel</button>
-          <button onClick={handleSubmit} disabled={isSaving} className="px-6 py-2 rounded-xl bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium transition-colors disabled:opacity-50">
+          <button onClick={() => navigate('/admin/projects')} className="px-6 py-2 rounded-xl text-slate-600 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-white/5 transition-colors font-medium">Cancel</button>
+          <button onClick={handleSubmit} disabled={isSaving} className="px-6 py-2 rounded-xl bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium transition-colors disabled:opacity-50 shadow-lg">
             {isSaving ? 'Saving...' : 'Save Project'}
           </button>
         </div>
@@ -133,106 +133,106 @@ export const AdminProjectEditor = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
           {/* Basic Info */}
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
-            <h2 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Basic Info</h2>
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">Basic Info</h2>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Title</label>
-                <input type="text" name="title" required value={formData.title} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Title</label>
+                <input type="text" name="title" required value={formData.title} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Slug</label>
-                <input type="text" name="slug" required value={formData.slug} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Slug</label>
+                <input type="text" name="slug" required value={formData.slug} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Category</label>
-                <input type="text" name="category" required value={formData.category} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Category</label>
+                <input type="text" name="category" required value={formData.category} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Subtitle</label>
-                <input type="text" name="subtitle" value={formData.subtitle || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Subtitle</label>
+                <input type="text" name="subtitle" value={formData.subtitle || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Description</label>
-              <textarea name="description" required value={formData.description || ''} onChange={handleChange} rows="4" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Description</label>
+              <textarea name="description" required value={formData.description || ''} onChange={handleChange} rows="4" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
             </div>
           </div>
 
           {/* Details */}
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
-            <h2 className="text-lg font-semibold text-white border-b border-white/10 pb-2">In-Depth Details</h2>
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">In-Depth Details</h2>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Challenges</label>
-              <textarea name="challenges" value={formData.challenges || ''} onChange={handleChange} rows="3" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Challenges</label>
+              <textarea name="challenges" value={formData.challenges || ''} onChange={handleChange} rows="3" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Solutions</label>
-              <textarea name="solutions" value={formData.solutions || ''} onChange={handleChange} rows="3" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Solutions</label>
+              <textarea name="solutions" value={formData.solutions || ''} onChange={handleChange} rows="3" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
             </div>
           </div>
         </div>
 
         <div className="lg:col-span-1 space-y-6">
           {/* Settings & Links */}
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
-            <h2 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Settings & Links</h2>
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">Settings & Links</h2>
             <div className="space-y-2">
               <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="is_published" checked={formData.is_published} onChange={handleChange} className="w-5 h-5 rounded border-white/20 bg-[#1E293B] text-[#7C5CFF]" />
-                <span className="text-white text-sm">Published</span>
+                <input type="checkbox" name="is_published" checked={formData.is_published} onChange={handleChange} className="w-5 h-5 rounded border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-[#1E293B] text-[#7C5CFF]" />
+                <span className="text-slate-900 dark:text-white text-sm">Published</span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" name="is_featured" checked={formData.is_featured} onChange={handleChange} className="w-5 h-5 rounded border-white/20 bg-[#1E293B] text-[#7C5CFF]" />
-                <span className="text-white text-sm">Featured Project</span>
+                <input type="checkbox" name="is_featured" checked={formData.is_featured} onChange={handleChange} className="w-5 h-5 rounded border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-[#1E293B] text-[#7C5CFF]" />
+                <span className="text-slate-900 dark:text-white text-sm">Featured Project</span>
               </label>
             </div>
             <div className="pt-2">
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Live Demo URL</label>
-              <input type="url" name="live_demo" value={formData.live_demo || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Live Demo URL</label>
+              <input type="url" name="live_demo" value={formData.live_demo || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">GitHub URL</label>
-              <input type="url" name="github_url" value={formData.github_url || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">GitHub URL</label>
+              <input type="url" name="github_url" value={formData.github_url || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
             </div>
           </div>
 
           {/* Media */}
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
-            <h2 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Cover Image</h2>
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2">Cover Image</h2>
             <ImageUploader currentImage={formData.image} onFileSelect={setCoverFile} />
           </div>
 
           {/* Lists */}
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-6">
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-6">
             <div>
-              <h2 className="text-lg font-semibold text-white border-b border-white/10 pb-2 mb-3">Technologies</h2>
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2 mb-3">Technologies</h2>
               <div className="flex gap-2 mb-2">
-                <input type="text" value={techInput} onChange={e => setTechInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && addItem(e, setTechnologies, techInput, setTechInput)} placeholder="Add technology" className="flex-1 bg-[#1E293B] border border-white/10 rounded-xl px-3 py-1.5 text-sm text-white outline-none focus:border-[#7C5CFF]" />
-                <button type="button" onClick={(e) => addItem(e, setTechnologies, techInput, setTechInput)} className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm transition-colors">Add</button>
+                <input type="text" value={techInput} onChange={e => setTechInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && addItem(e, setTechnologies, techInput, setTechInput)} placeholder="Add technology" className="flex-1 bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-3 py-1.5 text-sm text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
+                <button type="button" onClick={(e) => addItem(e, setTechnologies, techInput, setTechInput)} className="px-3 py-1.5 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-800 dark:text-white rounded-xl text-sm transition-colors font-medium">Add</button>
               </div>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech, idx) => (
-                  <span key={idx} className="bg-white/5 border border-white/10 px-2 py-1 rounded-lg text-sm text-[#CBD5E1] flex items-center gap-1">
-                    {tech} <button type="button" onClick={() => removeItem(idx, setTechnologies)} className="text-red-400 hover:text-red-300 ml-1">×</button>
+                  <span key={idx} className="bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-2 py-1 rounded-lg text-sm text-slate-800 dark:text-[#CBD5E1] flex items-center gap-1">
+                    {tech} <button type="button" onClick={() => removeItem(idx, setTechnologies)} className="text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 ml-1">×</button>
                   </span>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-white border-b border-white/10 pb-2 mb-3">Features</h2>
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-2 mb-3">Features</h2>
               <div className="flex gap-2 mb-2">
-                <input type="text" value={featureInput} onChange={e => setFeatureInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && addItem(e, setFeatures, featureInput, setFeatureInput)} placeholder="Add feature" className="flex-1 bg-[#1E293B] border border-white/10 rounded-xl px-3 py-1.5 text-sm text-white outline-none focus:border-[#7C5CFF]" />
-                <button type="button" onClick={(e) => addItem(e, setFeatures, featureInput, setFeatureInput)} className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm transition-colors">Add</button>
+                <input type="text" value={featureInput} onChange={e => setFeatureInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && addItem(e, setFeatures, featureInput, setFeatureInput)} placeholder="Add feature" className="flex-1 bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-3 py-1.5 text-sm text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
+                <button type="button" onClick={(e) => addItem(e, setFeatures, featureInput, setFeatureInput)} className="px-3 py-1.5 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-800 dark:text-white rounded-xl text-sm transition-colors font-medium">Add</button>
               </div>
               <ul className="space-y-1">
                 {features.map((feat, idx) => (
-                  <li key={idx} className="flex justify-between items-center text-sm text-[#CBD5E1] bg-white/5 p-2 rounded-lg">
+                  <li key={idx} className="flex justify-between items-center text-sm text-slate-800 dark:text-[#CBD5E1] bg-slate-100 dark:bg-white/5 p-2 rounded-lg">
                     <span className="truncate mr-2">• {feat}</span>
-                    <button type="button" onClick={() => removeItem(idx, setFeatures)} className="text-red-400 hover:text-red-300 shrink-0">✕</button>
+                    <button type="button" onClick={() => removeItem(idx, setFeatures)} className="text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 shrink-0">✕</button>
                   </li>
                 ))}
               </ul>

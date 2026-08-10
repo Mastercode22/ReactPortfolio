@@ -56,13 +56,13 @@ export const AdminProjects = () => {
   };
 
   const columns = [
-    { key: 'title', label: 'Project Title', render: (val, row) => <div className="font-bold text-white">{val} <span className="text-xs font-normal text-slate-400">({row.slug})</span></div> },
+    { key: 'title', label: 'Project Title', render: (val, row) => <div className="font-bold text-slate-900 dark:text-white">{val} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">({row.slug})</span></div> },
     { key: 'category', label: 'Category' },
     {
       key: 'is_featured',
       label: 'Featured',
       render: (val) => (
-        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${val ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-800 text-slate-500'}`}>
+        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${val ? 'bg-amber-500/20 text-amber-600 dark:text-amber-400' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-500'}`}>
           {val ? '⭐ Featured' : 'Standard'}
         </span>
       ),
@@ -71,7 +71,7 @@ export const AdminProjects = () => {
       key: 'is_published',
       label: 'Status',
       render: (val, row) => (
-        <button onClick={() => togglePublish(row)} className={`px-3 py-1 rounded-full text-xs font-bold ${val ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-700 text-slate-400'}`}>
+        <button onClick={() => togglePublish(row)} className={`px-3 py-1 rounded-full text-xs font-bold ${val ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400'}`}>
           {val ? 'Published' : 'Draft'}
         </button>
       ),
@@ -82,10 +82,10 @@ export const AdminProjects = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Portfolio Projects</h1>
-          <p className="text-sm text-[#CBD5E1]">Manage web applications, case studies, technologies, and live demo links.</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Portfolio Projects</h1>
+          <p className="text-sm text-slate-600 dark:text-[#CBD5E1]">Manage web applications, case studies, technologies, and live demo links.</p>
         </div>
-        <Link to="/admin/projects/new" className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2">
+        <Link to="/admin/projects/new" className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2 shadow-lg">
           <span>➕</span> Add Project
         </Link>
       </div>

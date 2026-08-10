@@ -87,64 +87,64 @@ export const AdminHero = () => {
     <div className="max-w-4xl space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Hero Section</h1>
-          <p className="text-sm text-[#CBD5E1]">Manage typing headlines, status pill, and introduction text.</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Hero Section</h1>
+          <p className="text-sm text-slate-600 dark:text-[#CBD5E1]">Manage typing headlines, status pill, and introduction text.</p>
         </div>
         <button
           onClick={handleSubmit}
           disabled={isSaving}
-          className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-6 py-2.5 rounded-xl font-medium transition-colors disabled:opacity-50"
+          className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-6 py-2.5 rounded-xl font-medium transition-colors disabled:opacity-50 shadow-lg"
         >
           {isSaving ? 'Saving...' : 'Save Changes'}
         </button>
       </div>
 
-      <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-6">
+      <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Badge Text</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Badge Text</label>
             <input
               type="text"
               name="badge_text"
               value={formData.badge_text}
               onChange={handleChange}
-              className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]"
+              className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"
               placeholder="e.g. Available for Selective Client Projects"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Headline Line 1</label>
-              <input type="text" name="headline_1" value={formData.headline_1} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Headline Line 1</label>
+              <input type="text" name="headline_1" value={formData.headline_1} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Headline Line 2</label>
-              <input type="text" name="headline_2" value={formData.headline_2} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Headline Line 2</label>
+              <input type="text" name="headline_2" value={formData.headline_2} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Headline Line 3</label>
-              <input type="text" name="headline_3" value={formData.headline_3} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Headline Line 3</label>
+              <input type="text" name="headline_3" value={formData.headline_3} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Headline Line 4</label>
-              <input type="text" name="headline_4" value={formData.headline_4} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Headline Line 4</label>
+              <input type="text" name="headline_4" value={formData.headline_4} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Bio Introduction Text</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Bio Introduction Text</label>
             <textarea
               name="bio"
               value={formData.bio}
               onChange={handleChange}
               rows="4"
-              className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]"
+              className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"
             ></textarea>
           </div>
 
-          <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-            <h3 className="text-white font-medium mb-4">Availability Status Pill</h3>
+          <div className="p-4 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/10">
+            <h3 className="text-slate-900 dark:text-white font-medium mb-4">Availability Status Pill</h3>
             <div className="flex items-center gap-6">
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
@@ -152,9 +152,9 @@ export const AdminHero = () => {
                   name="is_available"
                   checked={formData.is_available}
                   onChange={handleChange}
-                  className="w-5 h-5 rounded border-white/20 bg-[#1E293B] text-[#7C5CFF] focus:ring-[#7C5CFF]"
+                  className="w-5 h-5 rounded border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-[#1E293B] text-[#7C5CFF] focus:ring-[#7C5CFF]"
                 />
-                <span className="text-[#CBD5E1] text-sm">Available for work</span>
+                <span className="text-slate-700 dark:text-[#CBD5E1] text-sm">Available for work</span>
               </label>
 
               <div className="flex-1">
@@ -164,7 +164,7 @@ export const AdminHero = () => {
                   value={formData.availability_text}
                   onChange={handleChange}
                   placeholder="Availability text"
-                  className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]"
+                  className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"
                   disabled={!formData.is_available}
                 />
               </div>

@@ -84,11 +84,11 @@ const AdminDashboard = () => {
       {/* Stats Grid - 4 Columns x 2 Rows */}
       <div className="grid grid-cols-4 gap-2 sm:gap-6">
         {statCards.map((stat, index) => (
-          <div key={index} className="bg-[#121620] border border-white/10 rounded-xl sm:rounded-2xl p-2 sm:p-6 shadow-xl hover:border-[#7C5CFF]/40 transition-colors">
+          <div key={index} className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-xl sm:rounded-2xl p-2 sm:p-6 shadow-xl hover:border-[#7C5CFF]/40 transition-colors">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
               <div className="min-w-0 flex-1">
-                <p className="text-[#CBD5E1] text-[10px] sm:text-sm font-medium leading-tight truncate" title={stat.label}>{stat.label}</p>
-                <h3 className="text-base sm:text-3xl font-bold text-white mt-0.5 sm:mt-1">{stat.value}</h3>
+                <p className="text-slate-600 dark:text-[#CBD5E1] text-[10px] sm:text-sm font-medium leading-tight truncate" title={stat.label}>{stat.label}</p>
+                <h3 className="text-base sm:text-3xl font-bold text-slate-900 dark:text-white mt-0.5 sm:mt-1">{stat.value}</h3>
               </div>
               <div className={`w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center text-xs sm:text-2xl shrink-0 self-start sm:self-center ${stat.bg}`}>
                 {stat.icon}
@@ -101,22 +101,22 @@ const AdminDashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Quick Actions */}
         <div className="lg:col-span-1">
-          <h2 className="text-xl font-semibold text-white mb-4">Quick Actions</h2>
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-4 shadow-xl space-y-3">
-            <Link to="/admin/projects/new" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors text-[#F8FAFC]">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl">➕</div>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Quick Actions</h2>
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-4 shadow-xl space-y-3">
+            <Link to="/admin/projects/new" className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition-colors text-slate-800 dark:text-[#F8FAFC]">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-500 flex items-center justify-center text-xl">➕</div>
               <span className="font-medium">Add New Project</span>
             </Link>
-            <Link to="/admin/services" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors text-[#F8FAFC]">
-              <div className="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl">➕</div>
+            <Link to="/admin/services" className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition-colors text-slate-800 dark:text-[#F8FAFC]">
+              <div className="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-500 flex items-center justify-center text-xl">➕</div>
               <span className="font-medium">Add Service</span>
             </Link>
-            <Link to="/admin/cv" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors text-[#F8FAFC]">
-              <div className="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">📄</div>
+            <Link to="/admin/cv" className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition-colors text-slate-800 dark:text-[#F8FAFC]">
+              <div className="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-xl">📄</div>
               <span className="font-medium">Manage CV</span>
             </Link>
-            <Link to="/admin/media" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors text-[#F8FAFC]">
-              <div className="w-10 h-10 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center text-xl">🖼️</div>
+            <Link to="/admin/media" className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 transition-colors text-slate-800 dark:text-[#F8FAFC]">
+              <div className="w-10 h-10 rounded-lg bg-orange-500/20 text-orange-500 flex items-center justify-center text-xl">🖼️</div>
               <span className="font-medium">Upload Media</span>
             </Link>
           </div>
@@ -125,29 +125,29 @@ const AdminDashboard = () => {
         {/* Recent Messages */}
         <div className="lg:col-span-2">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold text-white">Recent Messages</h2>
-            <Link to="/admin/messages" className="text-sm text-[#7C5CFF] hover:text-[#6C63FF]">View All</Link>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Recent Messages</h2>
+            <Link to="/admin/messages" className="text-sm text-[#7C5CFF] hover:text-[#6C63FF] font-medium">View All</Link>
           </div>
-          <div className="bg-[#121620] border border-white/10 rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl overflow-hidden">
             {messages.length > 0 ? (
-              <div className="divide-y divide-white/5">
+              <div className="divide-y divide-slate-100 dark:divide-white/5">
                 {messages.map((msg, i) => (
-                  <div key={i} className="p-4 hover:bg-white/5 transition-colors flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <div key={i} className="p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/10 text-slate-800 dark:text-white flex items-center justify-center shrink-0 font-bold">
                       {msg.name?.charAt(0) || 'U'}
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-medium text-white truncate">{msg.name}</h4>
-                        <span className="text-xs text-[#CBD5E1] whitespace-nowrap">{msg.created_at || msg.date}</span>
+                        <h4 className="font-medium text-slate-900 dark:text-white truncate">{msg.name}</h4>
+                        <span className="text-xs text-slate-500 dark:text-[#CBD5E1] whitespace-nowrap">{msg.created_at || msg.date}</span>
                       </div>
-                      <p className="text-sm text-[#CBD5E1] truncate">{msg.subject}</p>
+                      <p className="text-sm text-slate-600 dark:text-[#CBD5E1] truncate">{msg.subject}</p>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="p-8 text-center text-[#CBD5E1]">
+              <div className="p-8 text-center text-slate-500 dark:text-[#CBD5E1]">
                 No recent messages
               </div>
             )}

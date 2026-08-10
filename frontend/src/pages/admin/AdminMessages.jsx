@@ -57,14 +57,14 @@ export const AdminMessages = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-black text-white">Inbound Contact Messages</h1>
-        <p className="text-sm text-[#CBD5E1] mt-1">View and manage messages sent through your website contact form.</p>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white">Inbound Contact Messages</h1>
+        <p className="text-sm text-slate-600 dark:text-[#CBD5E1] mt-1">View and manage messages sent through your website contact form.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Messages List Table */}
-        <div className="lg:col-span-7 p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-4">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
+        <div className="lg:col-span-7 p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-4 shadow-xl">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <MessageSquare className="w-5 h-5 text-[#7C5CFF]" /> Message Inbox ({messages.length})
           </h2>
 
@@ -79,8 +79,8 @@ export const AdminMessages = () => {
                   <span
                     className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                       row.status === 'unread'
-                        ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30 animate-pulse'
-                        : 'bg-slate-700/50 text-slate-400'
+                        ? 'bg-sky-500/20 text-sky-600 dark:text-sky-400 border border-sky-500/30 animate-pulse'
+                        : 'bg-slate-200 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400'
                     }`}
                   >
                     {row.status}
@@ -91,7 +91,7 @@ export const AdminMessages = () => {
                 key: 'created_at',
                 label: 'Received',
                 render: (row) => (
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
                     {new Date(row.created_at).toLocaleDateString()}
                   </span>
                 ),
@@ -102,14 +102,14 @@ export const AdminMessages = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleOpenMessage(row)}
-                  className="p-1.5 text-slate-300 hover:text-white"
+                  className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                   title="View Message"
                 >
                   <Eye className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setDeleteId(row.id)}
-                  className="p-1.5 text-rose-400 hover:text-rose-300"
+                  className="p-1.5 text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300"
                   title="Delete"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -120,17 +120,17 @@ export const AdminMessages = () => {
         </div>
 
         {/* Message Reader Pane */}
-        <div className="lg:col-span-5 p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-6">
-          <h2 className="text-lg font-bold text-white">Message Details</h2>
+        <div className="lg:col-span-5 p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-6 shadow-xl">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">Message Details</h2>
 
           {selectedMessage ? (
             <div className="space-y-6">
-              <div className="border-b border-white/10 pb-4 space-y-2">
+              <div className="border-b border-slate-200 dark:border-white/10 pb-4 space-y-2">
                 <span className="text-xs font-extrabold uppercase text-[#7C5CFF]">
                   {selectedMessage.subject || 'No Subject'}
                 </span>
-                <h3 className="text-xl font-bold text-white">{selectedMessage.name}</h3>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">{selectedMessage.name}</h3>
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400">
                   <Mail className="w-3.5 h-3.5 text-[#7C5CFF]" />
                   <a href={`mailto:${selectedMessage.email}`} className="hover:underline text-[#7C5CFF]">
                     {selectedMessage.email}
@@ -141,20 +141,20 @@ export const AdminMessages = () => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#1E293B] border border-white/10 text-sm text-slate-200 leading-relaxed whitespace-pre-wrap min-h-[160px]">
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#1E293B] border border-slate-200 dark:border-white/10 text-sm text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap min-h-[160px]">
                 {selectedMessage.message}
               </div>
 
               <div className="flex items-center gap-3 pt-2">
                 <a
                   href={`mailto:${selectedMessage.email}?subject=Re: ${encodeURIComponent(selectedMessage.subject || '')}`}
-                  className="flex-1 py-2.5 rounded-xl font-bold text-xs bg-[#7C5CFF] text-white flex items-center justify-center gap-2 hover:bg-[#6C63FF]"
+                  className="flex-1 py-2.5 rounded-xl font-bold text-xs bg-[#7C5CFF] text-white flex items-center justify-center gap-2 hover:bg-[#6C63FF] shadow-md"
                 >
                   <Mail className="w-4 h-4" /> Reply via Email
                 </a>
                 <button
                   onClick={() => setDeleteId(selectedMessage.id)}
-                  className="px-4 py-2.5 rounded-xl font-bold text-xs bg-rose-500/20 text-rose-400 hover:bg-rose-500/30 flex items-center gap-1.5"
+                  className="px-4 py-2.5 rounded-xl font-bold text-xs bg-rose-500/10 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 dark:hover:bg-rose-500/30 flex items-center gap-1.5"
                 >
                   <Trash2 className="w-4 h-4" /> Delete
                 </button>

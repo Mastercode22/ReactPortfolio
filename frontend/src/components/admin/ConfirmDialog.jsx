@@ -17,20 +17,20 @@ const ConfirmDialog = ({ isOpen, title, message, onConfirm, onCancel }) => {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-[#121620] border border-white/10 rounded-2xl p-6 w-full max-w-md shadow-2xl"
+            className="relative bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 w-full max-w-md shadow-2xl"
           >
-            <h3 className="text-xl font-bold text-[#F8FAFC] mb-2">{title}</h3>
-            <p className="text-[#CBD5E1] mb-6">{message}</p>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-[#F8FAFC] mb-2">{title}</h3>
+            <p className="text-slate-600 dark:text-[#CBD5E1] mb-6">{message}</p>
             <div className="flex justify-end gap-3">
               <button
                 onClick={onCancel}
-                className="px-4 py-2 rounded-xl text-[#CBD5E1] hover:bg-white/5 transition-colors font-medium"
+                className="px-4 py-2 rounded-xl text-slate-600 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-white/5 transition-colors font-medium"
               >
                 Cancel
               </button>
               <button
                 onClick={onConfirm}
-                className="px-4 py-2 rounded-xl bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors font-medium border border-red-500/20"
+                className="px-4 py-2 rounded-xl bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 hover:bg-red-500/20 dark:hover:bg-red-500/30 transition-colors font-medium border border-red-500/20"
               >
                 Confirm Delete
               </button>

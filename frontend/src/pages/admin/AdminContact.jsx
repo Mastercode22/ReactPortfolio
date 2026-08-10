@@ -119,85 +119,85 @@ export const AdminContact = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-black text-white">Contact & Social Settings</h1>
-        <p className="text-sm text-[#CBD5E1] mt-1">Manage public contact information, map links, and social platform icons.</p>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white">Contact & Social Settings</h1>
+        <p className="text-sm text-slate-600 dark:text-[#CBD5E1] mt-1">Manage public contact information, map links, and social platform icons.</p>
       </div>
 
       {/* Main Info Form */}
-      <form onSubmit={handleContactSubmit} className="p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-6">
-        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+      <form onSubmit={handleContactSubmit} className="p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-6 shadow-xl">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <Mail className="w-5 h-5 text-[#7C5CFF]" /> Primary Contact Information
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Direct Email</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Direct Email</label>
             <input
               type="email"
               value={contactInfo.email || ''}
               onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+              className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Phone / Mobile</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Phone / Mobile</label>
             <input
               type="text"
               value={contactInfo.phone || ''}
               onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+              className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Primary Location</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Primary Location</label>
             <input
               type="text"
               value={contactInfo.location || ''}
               onChange={(e) => setContactInfo({ ...contactInfo, location: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+              className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Timezone Label</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Timezone Label</label>
             <input
               type="text"
               value={contactInfo.timezone_label || ''}
               onChange={(e) => setContactInfo({ ...contactInfo, timezone_label: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+              className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Availability Status Text</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Availability Status Text</label>
             <input
               type="text"
               value={contactInfo.availability_text || ''}
               onChange={(e) => setContactInfo({ ...contactInfo, availability_text: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+              className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">WhatsApp Number (with country code)</label>
+            <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">WhatsApp Number (with country code)</label>
             <input
               type="text"
               value={contactInfo.whatsapp || ''}
               onChange={(e) => setContactInfo({ ...contactInfo, whatsapp: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+              className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Google Maps Embed URL</label>
+          <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Google Maps Embed URL</label>
           <input
             type="text"
             value={contactInfo.map_embed_url || ''}
             onChange={(e) => setContactInfo({ ...contactInfo, map_embed_url: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm outline-none focus:border-[#7C5CFF]"
+            className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm outline-none focus:border-[#7C5CFF]"
           />
         </div>
 
@@ -205,7 +205,7 @@ export const AdminContact = () => {
           <button
             type="submit"
             disabled={savingContact}
-            className="px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-[#6C63FF] to-[#7C5CFF] text-white flex items-center gap-2 hover:opacity-90"
+            className="px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-[#6C63FF] to-[#7C5CFF] text-white flex items-center gap-2 hover:opacity-90 shadow-lg"
           >
             {savingContact ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
             Save Contact Details
@@ -214,14 +214,14 @@ export const AdminContact = () => {
       </form>
 
       {/* Social Links Table */}
-      <div className="p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-6">
+      <div className="p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-6 shadow-xl">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <Globe className="w-5 h-5 text-[#7C5CFF]" /> Social Links & Media Handles
           </h2>
           <button
             onClick={() => handleOpenSocialModal()}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white flex items-center gap-1.5 hover:bg-[#6C63FF]"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white flex items-center gap-1.5 hover:bg-[#6C63FF] shadow-md"
           >
             <Plus className="w-4 h-4" /> Add Social Link
           </button>
@@ -237,7 +237,7 @@ export const AdminContact = () => {
               key: 'is_active',
               label: 'Status',
               render: (row) => (
-                <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${row.is_active ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}`}>
+                <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${row.is_active ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' : 'bg-rose-500/20 text-rose-600 dark:text-rose-400'}`}>
                   {row.is_active ? 'Active' : 'Hidden'}
                 </span>
               ),
@@ -246,10 +246,10 @@ export const AdminContact = () => {
           data={socialLinks}
           actions={(row) => (
             <div className="flex items-center gap-2">
-              <button onClick={() => handleOpenSocialModal(row)} className="p-1.5 text-slate-300 hover:text-white">
+              <button onClick={() => handleOpenSocialModal(row)} className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
                 <Edit className="w-4 h-4" />
               </button>
-              <button onClick={() => setDeleteId(row.id)} className="p-1.5 text-rose-400 hover:text-rose-300">
+              <button onClick={() => setDeleteId(row.id)} className="p-1.5 text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300">
                 <Trash2 className="w-4 h-4" />
               </button>
             </div>
@@ -260,51 +260,51 @@ export const AdminContact = () => {
       {/* Social Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <form onSubmit={handleSaveSocial} className="w-full max-w-md p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-4">
-            <h3 className="text-lg font-bold text-white">{editingSocial ? 'Edit Social Link' : 'New Social Link'}</h3>
+          <form onSubmit={handleSaveSocial} className="w-full max-w-md p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-4 shadow-2xl">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{editingSocial ? 'Edit Social Link' : 'New Social Link'}</h3>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Platform Name</label>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Platform Name</label>
               <input
                 type="text"
                 required
                 value={socialForm.platform}
                 onChange={(e) => setSocialForm({ ...socialForm, platform: e.target.value })}
                 placeholder="e.g. GitHub, LinkedIn, X"
-                className="w-full px-4 py-2.5 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">URL</label>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">URL</label>
               <input
                 type="url"
                 required
                 value={socialForm.url}
                 onChange={(e) => setSocialForm({ ...socialForm, url: e.target.value })}
                 placeholder="https://..."
-                className="w-full px-4 py-2.5 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Lucide Icon Name</label>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Lucide Icon Name</label>
               <input
                 type="text"
                 value={socialForm.icon_name}
                 onChange={(e) => setSocialForm({ ...socialForm, icon_name: e.target.value })}
                 placeholder="Github, Linkedin, Twitter, Mail..."
-                className="w-full px-4 py-2.5 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm"
               />
             </div>
             <div className="flex items-center justify-between pt-4">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20"
+                className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white hover:bg-[#6C63FF]"
+                className="px-6 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white hover:bg-[#6C63FF] shadow-md"
               >
                 Save Link
               </button>

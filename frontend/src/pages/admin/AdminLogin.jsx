@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import { API_BASE_URL } from '../../services/api';
+import ThemeToggle from '../../components/ui/ThemeToggle';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -42,29 +43,34 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#090B13] flex items-center justify-center p-4 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#F6F7FB] dark:bg-[#090B13] text-[#1B2430] dark:text-[#F8FAFC] flex items-center justify-center p-4 relative overflow-hidden font-sans transition-colors duration-300">
+      {/* Top right theme toggle */}
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle />
+      </div>
+
       {/* Decorative background orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7C5CFF]/20 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="w-full max-w-md relative z-10">
-        <div className="bg-[#121620]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="bg-white/90 dark:bg-[#121620]/80 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-2xl">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#7C5CFF] to-blue-400 mb-2">
+            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#6C63FF] to-[#7C5CFF] dark:from-[#7C5CFF] dark:to-blue-400 mb-2">
               Admin Portal
             </h1>
-            <p className="text-[#CBD5E1]">Sign in to manage your portfolio</p>
+            <p className="text-slate-600 dark:text-[#CBD5E1]">Sign in to manage your portfolio</p>
           </div>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl mb-6 text-sm text-center">
+            <div className="bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 px-4 py-3 rounded-xl mb-6 text-sm text-center">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-[#CBD5E1] mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#CBD5E1] mb-2">
                 Email Address
               </label>
               <input
@@ -72,13 +78,13 @@ const AdminLogin = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none focus:border-[#7C5CFF] transition-colors"
+                className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 outline-none focus:border-[#7C5CFF] transition-colors"
                 placeholder="admin@portfolio.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#CBD5E1] mb-2">
+              <label className="block text-sm font-medium text-slate-700 dark:text-[#CBD5E1] mb-2">
                 Password
               </label>
               <input
@@ -86,7 +92,7 @@ const AdminLogin = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 outline-none focus:border-[#7C5CFF] transition-colors"
+                className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/30 outline-none focus:border-[#7C5CFF] transition-colors"
                 placeholder="••••••••"
               />
             </div>
@@ -94,7 +100,7 @@ const AdminLogin = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+              className="w-full bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-70 shadow-lg"
             >
               {isLoading ? (
                 <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">

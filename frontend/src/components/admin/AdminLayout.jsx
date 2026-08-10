@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, Outlet } from 'react-router-dom';
 import { useAdminAuth } from '../../context/AdminAuthContext';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const AdminLayout = ({ children }) => {
   const { logout, adminUser } = useAdminAuth();
@@ -32,7 +33,7 @@ const AdminLayout = ({ children }) => {
   const breadcrumbName = navItems.find(item => location.pathname.includes(item.path))?.name || 'Dashboard';
 
   return (
-    <div className="min-h-screen bg-[#090B13] text-[#F8FAFC] flex font-sans">
+    <div className="min-h-screen bg-[#F6F7FB] dark:bg-[#090B13] text-[#1B2430] dark:text-[#F8FAFC] flex font-sans transition-colors duration-300">
       {/* Mobile Overlay */}
       {isMobileOpen && (
         <div 
@@ -42,11 +43,11 @@ const AdminLayout = ({ children }) => {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#121620] border-r border-white/5 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static flex flex-col ${
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-[#121620] border-r border-slate-200 dark:border-white/5 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static flex flex-col ${
         isMobileOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        <div className="h-16 flex items-center px-6 border-b border-white/5">
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#7C5CFF] to-blue-400">
+        <div className="h-16 flex items-center px-6 border-b border-slate-200 dark:border-white/5">
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#6C63FF] to-[#7C5CFF] dark:from-[#7C5CFF] dark:to-blue-400">
             Admin Portal
           </span>
         </div>
@@ -60,8 +61,8 @@ const AdminLayout = ({ children }) => {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 ${
                     isActive
-                      ? 'bg-[#7C5CFF]/10 text-[#7C5CFF] font-medium'
-                      : 'text-[#CBD5E1] hover:bg-white/5 hover:text-white'
+                      ? 'bg-[#7C5CFF]/15 text-[#7C5CFF] font-semibold'
+                      : 'text-slate-600 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white'
                   }`
                 }
               >
@@ -72,10 +73,10 @@ const AdminLayout = ({ children }) => {
           </nav>
         </div>
 
-        <div className="p-4 border-t border-white/5">
+        <div className="p-4 border-t border-slate-200 dark:border-white/5">
           <button
             onClick={logout}
-            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-red-400 hover:bg-red-400/10 transition-colors"
+            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-red-500 hover:bg-red-500/10 transition-colors font-medium"
           >
             <span className="text-lg">🚪</span>
             <span>Logout</span>
@@ -86,20 +87,21 @@ const AdminLayout = ({ children }) => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         {/* Top Header */}
-        <header className="h-16 flex items-center justify-between px-4 sm:px-8 border-b border-white/5 bg-white/5 backdrop-blur-xl shrink-0">
+        <header className="h-16 flex items-center justify-between px-4 sm:px-8 border-b border-slate-200 dark:border-white/5 bg-white/80 dark:bg-white/5 backdrop-blur-xl shrink-0">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMobileOpen(true)}
-              className="lg:hidden p-2 rounded-lg text-[#CBD5E1] hover:bg-white/5"
+              className="lg:hidden p-2 rounded-lg text-slate-600 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-white/5"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <h1 className="text-xl font-semibold text-white">{breadcrumbName}</h1>
+            <h1 className="text-xl font-semibold text-slate-900 dark:text-white">{breadcrumbName}</h1>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-[#CBD5E1] hidden sm:block">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <ThemeToggle />
+            <span className="text-sm text-slate-600 dark:text-[#CBD5E1] hidden sm:block">
               Welcome, {adminUser?.name || 'Admin'}
             </span>
             <div className="w-8 h-8 rounded-full bg-[#7C5CFF]/20 border border-[#7C5CFF]/30 flex items-center justify-center text-[#7C5CFF] font-bold">

@@ -88,7 +88,7 @@ export const AdminExperience = () => {
   };
 
   const columns = [
-    { key: 'role', label: 'Role Title', render: (val) => <div className="font-bold text-white">{val}</div> },
+    { key: 'role', label: 'Role Title', render: (val) => <div className="font-bold text-slate-900 dark:text-white">{val}</div> },
     { key: 'company', label: 'Company / Agency' },
     { key: 'period', label: 'Period' },
     { key: 'sort_order', label: 'Order' },
@@ -98,10 +98,10 @@ export const AdminExperience = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Career Experience</h1>
-          <p className="text-sm text-[#CBD5E1]">Manage work history, agency contracts, achievements, and skill badges.</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Career Experience</h1>
+          <p className="text-sm text-slate-600 dark:text-[#CBD5E1]">Manage work history, agency contracts, achievements, and skill badges.</p>
         </div>
-        <button onClick={() => { setFormData({ ...initialForm, sort_order: expList.length + 1 }); setIsModalOpen(true); }} className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2">
+        <button onClick={() => { setFormData({ ...initialForm, sort_order: expList.length + 1 }); setIsModalOpen(true); }} className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2 shadow-lg">
           <span>➕</span> Add Experience
         </button>
       </div>
@@ -114,59 +114,59 @@ export const AdminExperience = () => {
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
-            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative bg-[#121620] border border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar p-6">
-              <h2 className="text-xl font-bold text-white mb-6">{formData.id ? 'Edit Experience' : 'Add Experience'}</h2>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar p-6">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">{formData.id ? 'Edit Experience' : 'Add Experience'}</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Role Title</label>
-                    <input type="text" required value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Role Title</label>
+                    <input type="text" required value={formData.role} onChange={e => setFormData({...formData, role: e.target.value})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Company / Organization</label>
-                    <input type="text" required value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Company / Organization</label>
+                    <input type="text" required value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Period</label>
-                    <input type="text" required value={formData.period} onChange={e => setFormData({...formData, period: e.target.value})} placeholder="2025 — Present" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Period</label>
+                    <input type="text" required value={formData.period} onChange={e => setFormData({...formData, period: e.target.value})} placeholder="2025 — Present" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Location</label>
-                    <input type="text" value={formData.location || ''} onChange={e => setFormData({...formData, location: e.target.value})} placeholder="Remote / Ghana" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Location</label>
+                    <input type="text" value={formData.location || ''} onChange={e => setFormData({...formData, location: e.target.value})} placeholder="Remote / Ghana" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Sort Order</label>
-                    <input type="number" value={formData.sort_order} onChange={e => setFormData({...formData, sort_order: parseInt(e.target.value) || 0})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Sort Order</label>
+                    <input type="number" value={formData.sort_order} onChange={e => setFormData({...formData, sort_order: parseInt(e.target.value) || 0})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Description Overview</label>
-                  <textarea value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} rows="3" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Description Overview</label>
+                  <textarea value={formData.description || ''} onChange={e => setFormData({...formData, description: e.target.value})} rows="3" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Key Achievements</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Key Achievements</label>
                   <div className="flex gap-2 mb-2">
-                    <input type="text" value={newAchieve} onChange={e => setNewAchieve(e.target.value)} onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), addAchieve())} placeholder="Add achievement bullet" className="flex-1 bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
-                    <button type="button" onClick={addAchieve} className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl">Add</button>
+                    <input type="text" value={newAchieve} onChange={e => setNewAchieve(e.target.value)} onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), addAchieve())} placeholder="Add achievement bullet" className="flex-1 bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
+                    <button type="button" onClick={addAchieve} className="px-4 py-2 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-800 dark:text-white rounded-xl transition-colors font-medium">Add</button>
                   </div>
                   <ul className="space-y-1">
                     {(formData.achievements || []).map((ach, idx) => (
-                      <li key={idx} className="flex justify-between items-center bg-[#1E293B] px-3 py-1.5 rounded-lg text-[#F8FAFC] text-xs">
+                      <li key={idx} className="flex justify-between items-center bg-slate-100 dark:bg-[#1E293B] px-3 py-1.5 rounded-lg text-slate-800 dark:text-[#F8FAFC] text-xs">
                         <span>✓ {ach}</span>
-                        <button type="button" onClick={() => setFormData(p => ({ ...p, achievements: p.achievements.filter((_, i) => i !== idx) }))} className="text-red-400">✕</button>
+                        <button type="button" onClick={() => setFormData(p => ({ ...p, achievements: p.achievements.filter((_, i) => i !== idx) }))} className="text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300">✕</button>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="flex justify-end gap-3 pt-4 border-t border-white/10 mt-6">
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 rounded-xl text-[#CBD5E1] hover:bg-white/5">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-6 py-2 rounded-xl bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium transition-colors disabled:opacity-50">{isSaving ? 'Saving...' : 'Save Experience'}</button>
+                <div className="flex justify-end gap-3 pt-4 border-t border-slate-200 dark:border-white/10 mt-6">
+                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 rounded-xl text-slate-600 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">Cancel</button>
+                  <button type="submit" disabled={isSaving} className="px-6 py-2 rounded-xl bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium transition-colors disabled:opacity-50 shadow-md">{isSaving ? 'Saving...' : 'Save Experience'}</button>
                 </div>
               </form>
             </motion.div>

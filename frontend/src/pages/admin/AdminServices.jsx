@@ -101,10 +101,10 @@ export const AdminServices = () => {
 
   const columns = [
     { key: 'icon_name', label: 'Icon' },
-    { key: 'title', label: 'Title', render: (val) => <div className="font-medium">{val}</div> },
+    { key: 'title', label: 'Title', render: (val) => <div className="font-medium text-slate-900 dark:text-white">{val}</div> },
     { key: 'category', label: 'Category' },
     { key: 'is_published', label: 'Status', render: (val, row) => (
-      <button onClick={() => togglePublish(row)} className={`px-3 py-1 rounded-full text-xs font-medium ${val ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}`}>
+      <button onClick={() => togglePublish(row)} className={`px-3 py-1 rounded-full text-xs font-medium ${val ? 'bg-green-500/20 text-green-600 dark:text-green-400' : 'bg-gray-500/20 text-gray-600 dark:text-gray-400'}`}>
         {val ? 'Published' : 'Draft'}
       </button>
     )}
@@ -114,10 +114,10 @@ export const AdminServices = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Services</h1>
-          <p className="text-sm text-[#CBD5E1]">Manage bento services grid and feature bullet points.</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Services</h1>
+          <p className="text-sm text-slate-600 dark:text-[#CBD5E1]">Manage bento services grid and feature bullet points.</p>
         </div>
-        <button onClick={() => { setFormData({ ...initialForm, sort_order: services.length + 1 }); setIsModalOpen(true); }} className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2">
+        <button onClick={() => { setFormData({ ...initialForm, sort_order: services.length + 1 }); setIsModalOpen(true); }} className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2 shadow-lg">
           <span>➕</span> Add Service
         </button>
       </div>
@@ -130,68 +130,68 @@ export const AdminServices = () => {
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
-            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative bg-[#121620] border border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar p-6">
-              <h2 className="text-xl font-bold text-white mb-6">{formData.id ? 'Edit Service' : 'Add Service'}</h2>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar p-6">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">{formData.id ? 'Edit Service' : 'Add Service'}</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Title</label>
-                    <input type="text" required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Title</label>
+                    <input type="text" required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Category</label>
-                    <input type="text" required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Category</label>
+                    <input type="text" required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Icon Name</label>
-                    <input type="text" required value={formData.icon_name} onChange={e => setFormData({...formData, icon_name: e.target.value})} placeholder="e.g. Layout, Code, Globe" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Icon Name</label>
+                    <input type="text" required value={formData.icon_name} onChange={e => setFormData({...formData, icon_name: e.target.value})} placeholder="e.g. Layout, Code, Globe" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Grid Size</label>
-                    <select value={formData.grid_size} onChange={e => setFormData({...formData, grid_size: e.target.value})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Grid Size</label>
+                    <select value={formData.grid_size} onChange={e => setFormData({...formData, grid_size: e.target.value})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]">
                       <option value="col-span-12 lg:col-span-7">7 Columns (Large)</option>
                       <option value="col-span-12 lg:col-span-5">5 Columns (Medium)</option>
                       <option value="col-span-12 lg:col-span-6">6 Columns (Half)</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Sort Order</label>
-                    <input type="number" required value={formData.sort_order} onChange={e => setFormData({...formData, sort_order: parseInt(e.target.value) || 0})} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
+                    <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Sort Order</label>
+                    <input type="number" required value={formData.sort_order} onChange={e => setFormData({...formData, sort_order: parseInt(e.target.value) || 0})} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Description</label>
-                  <textarea required value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} rows="3" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Description</label>
+                  <textarea required value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} rows="3" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Features (Bullet points)</label>
+                  <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Features (Bullet points)</label>
                   <div className="flex gap-2 mb-2">
-                    <input type="text" value={newFeature} onChange={e => setNewFeature(e.target.value)} onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), addFeature())} placeholder="Add a feature bullet" className="flex-1 bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white outline-none focus:border-[#7C5CFF]" />
-                    <button type="button" onClick={addFeature} className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-colors">Add</button>
+                    <input type="text" value={newFeature} onChange={e => setNewFeature(e.target.value)} onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), addFeature())} placeholder="Add a feature bullet" className="flex-1 bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
+                    <button type="button" onClick={addFeature} className="px-4 py-2 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-800 dark:text-white rounded-xl transition-colors font-medium">Add</button>
                   </div>
                   <ul className="space-y-2">
                     {(formData.features || []).map((feat, idx) => (
-                      <li key={idx} className="flex justify-between items-center bg-[#1E293B] px-3 py-2 rounded-lg text-[#F8FAFC] text-sm">
+                      <li key={idx} className="flex justify-between items-center bg-slate-100 dark:bg-[#1E293B] px-3 py-2 rounded-lg text-slate-800 dark:text-[#F8FAFC] text-sm">
                         <span>• {feat}</span>
-                        <button type="button" onClick={() => removeFeature(idx)} className="text-red-400 hover:text-red-300">✕</button>
+                        <button type="button" onClick={() => removeFeature(idx)} className="text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300">✕</button>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="flex items-center gap-3 py-2">
-                  <input type="checkbox" checked={formData.is_published} onChange={e => setFormData({...formData, is_published: e.target.checked})} className="w-5 h-5 rounded border-white/20 bg-[#1E293B] text-[#7C5CFF] focus:ring-[#7C5CFF]" />
-                  <span className="text-[#CBD5E1]">Published</span>
+                  <input type="checkbox" checked={formData.is_published} onChange={e => setFormData({...formData, is_published: e.target.checked})} className="w-5 h-5 rounded border-slate-300 dark:border-white/20 bg-slate-100 dark:bg-[#1E293B] text-[#7C5CFF] focus:ring-[#7C5CFF]" />
+                  <span className="text-slate-700 dark:text-[#CBD5E1]">Published</span>
                 </div>
 
-                <div className="flex justify-end gap-3 pt-4 border-t border-white/10 mt-6">
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 rounded-xl text-[#CBD5E1] hover:bg-white/5 transition-colors">Cancel</button>
-                  <button type="submit" disabled={isSaving} className="px-6 py-2 rounded-xl bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium transition-colors disabled:opacity-50">{isSaving ? 'Saving...' : 'Save Service'}</button>
+                <div className="flex justify-end gap-3 pt-4 border-t border-slate-200 dark:border-white/10 mt-6">
+                  <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 rounded-xl text-slate-600 dark:text-[#CBD5E1] hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">Cancel</button>
+                  <button type="submit" disabled={isSaving} className="px-6 py-2 rounded-xl bg-[#7C5CFF] hover:bg-[#6C63FF] text-white font-medium transition-colors disabled:opacity-50 shadow-md">{isSaving ? 'Saving...' : 'Save Service'}</button>
                 </div>
               </form>
             </motion.div>

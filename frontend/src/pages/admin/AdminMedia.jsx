@@ -78,13 +78,13 @@ export const AdminMedia = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-black text-white">Media Library & File Assets</h1>
-        <p className="text-sm text-[#CBD5E1] mt-1">Upload images, logos, and banners to generate static public URLs for your portfolio.</p>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white">Media Library & File Assets</h1>
+        <p className="text-sm text-slate-600 dark:text-[#CBD5E1] mt-1">Upload images, logos, and banners to generate static public URLs for your portfolio.</p>
       </div>
 
       {/* Upload Box */}
-      <div className="p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-4">
-        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+      <div className="p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-4 shadow-xl">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <Image className="w-5 h-5 text-[#7C5CFF]" /> Upload New Asset
         </h2>
         <ImageUploader onFileSelect={handleFileUpload} accept="image/*" maxSizeMB={5} />
@@ -96,8 +96,8 @@ export const AdminMedia = () => {
       </div>
 
       {/* Media Grid */}
-      <div className="p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-6">
-        <h2 className="text-lg font-bold text-white">Uploaded Files ({mediaList.length})</h2>
+      <div className="p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-6 shadow-xl">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white">Uploaded Files ({mediaList.length})</h2>
 
         {loading ? (
           <div className="flex justify-center py-12">
@@ -110,8 +110,8 @@ export const AdminMedia = () => {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {mediaList.map((item) => (
-              <div key={item.id} className="group relative rounded-2xl overflow-hidden bg-[#1E293B] border border-white/10 flex flex-col justify-between">
-                <div className="h-32 w-full bg-slate-950/40 flex items-center justify-center p-2 overflow-hidden">
+              <div key={item.id} className="group relative rounded-2xl overflow-hidden bg-slate-50 dark:bg-[#1E293B] border border-slate-200 dark:border-white/10 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                <div className="h-32 w-full bg-slate-100 dark:bg-slate-950/40 flex items-center justify-center p-2 overflow-hidden">
                   <img
                     src={item.public_url || item.file_path}
                     alt={item.original_filename}
@@ -120,24 +120,24 @@ export const AdminMedia = () => {
                 </div>
 
                 <div className="p-3 space-y-2">
-                  <p className="text-xs font-bold text-white truncate" title={item.original_filename}>
+                  <p className="text-xs font-bold text-slate-900 dark:text-white truncate" title={item.original_filename}>
                     {item.original_filename}
                   </p>
-                  <p className="text-[10px] text-slate-400">
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400">
                     {(item.file_size / 1024).toFixed(1)} KB
                   </p>
 
-                  <div className="flex items-center gap-2 pt-1 border-t border-white/10">
+                  <div className="flex items-center gap-2 pt-1 border-t border-slate-200 dark:border-white/10">
                     <button
                       onClick={() => handleCopyUrl(item.public_url || item.file_path, item.id)}
-                      className="flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold bg-white/10 text-white hover:bg-[#7C5CFF] transition-colors flex items-center justify-center gap-1"
+                      className="flex-1 py-1.5 px-2 rounded-lg text-[11px] font-bold bg-slate-200 dark:bg-white/10 text-slate-800 dark:text-white hover:bg-[#7C5CFF] hover:text-white transition-colors flex items-center justify-center gap-1"
                     >
-                      {copiedId === item.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                      {copiedId === item.id ? <Check className="w-3 h-3 text-emerald-500 dark:text-emerald-400" /> : <Copy className="w-3 h-3" />}
                       <span>{copiedId === item.id ? 'Copied!' : 'Copy URL'}</span>
                     </button>
                     <button
                       onClick={() => setDeleteId(item.id)}
-                      className="p-1.5 rounded-lg text-rose-400 hover:bg-rose-500/20"
+                      className="p-1.5 rounded-lg text-rose-500 dark:text-rose-400 hover:bg-rose-500/10 dark:hover:bg-rose-500/20"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -152,7 +152,7 @@ export const AdminMedia = () => {
       <ConfirmDialog
         isOpen={!!deleteId}
         title="Delete Media File?"
-        message="Are you sure you want to delete this media item? Any sections using this image URL will display a missing image."
+        message="Are you sure you want to permanently delete this media asset?"
         onConfirm={handleDelete}
         onCancel={() => setDeleteId(null)}
       />

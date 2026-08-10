@@ -70,7 +70,7 @@ const ImageUploader = ({ onFileSelect, currentImage, accept = "image/*", maxSize
     <div className="w-full">
       <div 
         className={`relative border-2 border-dashed rounded-2xl p-8 transition-all cursor-pointer overflow-hidden
-          ${dragActive ? 'border-[#7C5CFF] bg-[#7C5CFF]/10' : 'border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/30'}
+          ${dragActive ? 'border-[#7C5CFF] bg-[#7C5CFF]/10' : 'border-slate-300 dark:border-white/20 bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 hover:border-slate-400 dark:hover:border-white/30'}
         `}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -88,24 +88,24 @@ const ImageUploader = ({ onFileSelect, currentImage, accept = "image/*", maxSize
         
         <div className="flex flex-col items-center justify-center text-center">
           {preview ? (
-            <div className="relative w-full max-w-[200px] mb-4 aspect-square rounded-xl overflow-hidden bg-black/20">
+            <div className="relative w-full max-w-[200px] mb-4 aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-black/20">
               <img src={preview} alt="Preview" className="w-full h-full object-contain" />
             </div>
           ) : (
-            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 text-3xl">
+            <div className="w-16 h-16 rounded-full bg-slate-200/60 dark:bg-white/5 flex items-center justify-center mb-4 text-3xl">
               📁
             </div>
           )}
           
           {fileDetails ? (
             <div>
-              <p className="text-white font-medium break-all">{fileDetails.name}</p>
-              <p className="text-[#CBD5E1] text-sm">{fileDetails.size}</p>
+              <p className="text-slate-900 dark:text-white font-medium break-all">{fileDetails.name}</p>
+              <p className="text-slate-500 dark:text-[#CBD5E1] text-sm">{fileDetails.size}</p>
             </div>
           ) : (
             <div>
-              <p className="text-white font-medium mb-1">Click to upload or drag and drop</p>
-              <p className="text-[#CBD5E1] text-sm">Supported files up to {maxSizeMB}MB</p>
+              <p className="text-slate-900 dark:text-white font-medium mb-1">Click to upload or drag and drop</p>
+              <p className="text-slate-500 dark:text-[#CBD5E1] text-sm">Supported files up to {maxSizeMB}MB</p>
             </div>
           )}
         </div>
@@ -113,7 +113,7 @@ const ImageUploader = ({ onFileSelect, currentImage, accept = "image/*", maxSize
         {fileDetails && (
           <button 
             onClick={clearSelection}
-            className="absolute top-2 right-2 p-2 rounded-lg bg-black/50 text-white hover:bg-red-500/80 transition-colors"
+            className="absolute top-2 right-2 p-2 rounded-lg bg-slate-900/60 dark:bg-black/50 text-white hover:bg-red-500/80 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -121,7 +121,7 @@ const ImageUploader = ({ onFileSelect, currentImage, accept = "image/*", maxSize
           </button>
         )}
       </div>
-      {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
+      {error && <p className="text-red-500 dark:text-red-400 text-sm mt-2">{error}</p>}
     </div>
   );
 };

@@ -152,57 +152,57 @@ export const AdminAbout = () => {
     <div className="max-w-5xl mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">About Section</h1>
-          <p className="text-sm text-[#CBD5E1]">Manage bio, title, badges, and stat counters.</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">About Section</h1>
+          <p className="text-sm text-slate-600 dark:text-[#CBD5E1]">Manage bio, title, badges, and stat counters.</p>
         </div>
-        <button onClick={handleSubmit} disabled={isSaving} className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-6 py-2.5 rounded-xl font-medium transition-colors">
+        <button onClick={handleSubmit} disabled={isSaving} className="bg-[#7C5CFF] hover:bg-[#6C63FF] text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-lg">
           {isSaving ? 'Saving...' : 'Save Changes'}
         </button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-6">
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-6">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Badge Text</label>
-                <input type="text" name="badge" value={formData.badge || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Badge Text</label>
+                <input type="text" name="badge" value={formData.badge || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Main Heading</label>
-                <input type="text" name="heading" value={formData.heading || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Main Heading</label>
+                <input type="text" name="heading" value={formData.heading || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Full Name</label>
-                <input type="text" name="name" value={formData.name || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Full Name</label>
+                <input type="text" name="name" value={formData.name || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Job Title</label>
-                <input type="text" name="job_title" value={formData.job_title || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Job Title</label>
+                <input type="text" name="job_title" value={formData.job_title || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Location</label>
-                <input type="text" name="location" value={formData.location || ''} onChange={handleChange} className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]" />
+                <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Location</label>
+                <input type="text" name="location" value={formData.location || ''} onChange={handleChange} className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]" />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Bio Paragraph 1</label>
-              <textarea name="bio_paragraph_1" value={formData.bio_paragraph_1 || ''} onChange={handleChange} rows="4" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Bio Paragraph 1</label>
+              <textarea name="bio_paragraph_1" value={formData.bio_paragraph_1 || ''} onChange={handleChange} rows="4" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Bio Paragraph 2</label>
-              <textarea name="bio_paragraph_2" value={formData.bio_paragraph_2 || ''} onChange={handleChange} rows="4" className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#7C5CFF]"></textarea>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Bio Paragraph 2</label>
+              <textarea name="bio_paragraph_2" value={formData.bio_paragraph_2 || ''} onChange={handleChange} rows="4" className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-[#7C5CFF]"></textarea>
             </div>
           </div>
         </div>
 
         <div className="lg:col-span-1">
-          <div className="bg-[#121620] border border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
-            <h3 className="text-lg font-semibold text-white">Profile Image</h3>
+          <div className="bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl space-y-4">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Profile Image</h3>
             <ImageUploader 
               currentImage={formData.profile_image} 
               onFileSelect={(file) => {
@@ -210,13 +210,13 @@ export const AdminAbout = () => {
               }} 
             />
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-2">Or Image URL</label>
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-2">Or Image URL</label>
               <input
                 type="text"
                 name="profile_image"
                 value={formData.profile_image || ''}
                 onChange={handleChange}
-                className="w-full bg-[#1E293B] border border-white/10 rounded-xl px-4 py-2 text-white text-xs outline-none focus:border-[#7C5CFF]"
+                className="w-full bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 rounded-xl px-4 py-2 text-slate-900 dark:text-white text-xs outline-none focus:border-[#7C5CFF]"
               />
             </div>
           </div>
@@ -224,12 +224,12 @@ export const AdminAbout = () => {
       </div>
 
       {/* Stats Counter Section */}
-      <div className="p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-6">
+      <div className="p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-6 shadow-xl">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-white">About Section Stats Cards</h2>
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white">About Section Stats Cards</h2>
           <button
             onClick={() => handleOpenStatModal()}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white flex items-center gap-1.5 hover:bg-[#6C63FF]"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white flex items-center gap-1.5 hover:bg-[#6C63FF] shadow-md"
           >
             <Plus className="w-4 h-4" /> Add Stat Card
           </button>
@@ -245,10 +245,10 @@ export const AdminAbout = () => {
           data={statsList}
           actions={(row) => (
             <div className="flex items-center gap-2">
-              <button onClick={() => handleOpenStatModal(row)} className="p-1.5 text-slate-300 hover:text-white">
+              <button onClick={() => handleOpenStatModal(row)} className="p-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
                 <Edit className="w-4 h-4" />
               </button>
-              <button onClick={() => setDeleteStatId(row.id)} className="p-1.5 text-rose-400 hover:text-rose-300">
+              <button onClick={() => setDeleteStatId(row.id)} className="p-1.5 text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300">
                 <Trash2 className="w-4 h-4" />
               </button>
             </div>
@@ -259,22 +259,22 @@ export const AdminAbout = () => {
       {/* Stat Modal */}
       {isStatModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <form onSubmit={handleSaveStat} className="w-full max-w-md p-6 rounded-3xl bg-[#121620] border border-white/10 space-y-4">
-            <h3 className="text-lg font-bold text-white">{editingStat ? 'Edit Stat Card' : 'New Stat Card'}</h3>
+          <form onSubmit={handleSaveStat} className="w-full max-w-md p-6 rounded-3xl bg-white dark:bg-[#121620] border border-slate-200 dark:border-white/10 space-y-4 shadow-2xl">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{editingStat ? 'Edit Stat Card' : 'New Stat Card'}</h3>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Label</label>
-              <input type="text" required value={statForm.label} onChange={(e) => setStatForm({ ...statForm, label: e.target.value })} placeholder="e.g. Projects Completed" className="w-full px-4 py-2.5 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Label</label>
+              <input type="text" required value={statForm.label} onChange={(e) => setStatForm({ ...statForm, label: e.target.value })} placeholder="e.g. Projects Completed" className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm" />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Value</label>
-              <input type="text" required value={statForm.value} onChange={(e) => setStatForm({ ...statForm, value: e.target.value })} placeholder="e.g. 45+" className="w-full px-4 py-2.5 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Value</label>
+              <input type="text" required value={statForm.value} onChange={(e) => setStatForm({ ...statForm, value: e.target.value })} placeholder="e.g. 45+" className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm" />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#CBD5E1] uppercase mb-1">Lucide Icon Name</label>
-              <input type="text" value={statForm.icon_name || ''} onChange={(e) => setStatForm({ ...statForm, icon_name: e.target.value })} placeholder="Briefcase, Award, Code, Sparkles..." className="w-full px-4 py-2.5 rounded-xl bg-[#1E293B] border border-white/10 text-white text-sm" />
+              <label className="block text-xs font-bold text-slate-700 dark:text-[#CBD5E1] uppercase mb-1">Lucide Icon Name</label>
+              <input type="text" value={statForm.icon_name || ''} onChange={(e) => setStatForm({ ...statForm, icon_name: e.target.value })} placeholder="Briefcase, Award, Code, Sparkles..." className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-[#1E293B] border border-slate-300 dark:border-white/10 text-slate-900 dark:text-white text-sm" />
             </div>
             <div className="flex items-center justify-between pt-4">
-              <button type="button" onClick={() => setIsStatModalOpen(false)} className="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 text-white hover:bg-white/20">Cancel</button>
+              <button type="button" onClick={() => setIsStatModalOpen(false)} className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-white hover:bg-slate-200 dark:hover:bg-white/20">Cancel</button>
               <button type="submit" className="px-6 py-2 rounded-xl text-xs font-bold bg-[#7C5CFF] text-white hover:bg-[#6C63FF]">Save Stat</button>
             </div>
           </form>
