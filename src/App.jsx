@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { LoadingProvider } from './context/LoadingContext';
 import BrandSvgLoader from './components/ui/BrandSvgLoader';
+import ErrorBoundary from './components/ui/ErrorBoundary';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import MouseGlow from './components/ui/MouseGlow';
@@ -26,22 +27,24 @@ const AnimatedRoutes = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<BrandSvgLoader statusText="LOADING MODULE..." />}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:id" element={<ProjectDetailPage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/certifications" element={<CertificationsPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/resume" element={<ResumePage />} />
-          {/* Fallback route */}
-          <Route path="*" element={<HomePage />} />
-        </Routes>
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<BrandSvgLoader statusText="LOADING MODULE..." />}>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:id" element={<ProjectDetailPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/certifications" element={<CertificationsPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/resume" element={<ResumePage />} />
+            {/* Fallback route */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </AnimatePresence>
   );
 };

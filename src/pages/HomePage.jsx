@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
+import ErrorBoundary from '../components/ui/ErrorBoundary';
 import Hero from '../components/sections/Hero';
 
 // Progressive Lazy Loading for below-the-fold sections
@@ -23,16 +24,18 @@ export const HomePage = () => {
   return (
     <PageWrapper>
       <Hero />
-      <Suspense fallback={<SectionSkeleton />}>
-        <About />
-        <Services />
-        <TechStack />
-        <FeaturedProjects limit={3} showHeader={true} />
-        <Process />
-        <GithubSection />
-        <Testimonials />
-        <Contact />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<SectionSkeleton />}>
+          <About />
+          <Services />
+          <TechStack />
+          <FeaturedProjects limit={3} showHeader={true} />
+          <Process />
+          <GithubSection />
+          <Testimonials />
+          <Contact />
+        </Suspense>
+      </ErrorBoundary>
     </PageWrapper>
   );
 };

@@ -102,7 +102,7 @@ export const FeaturedProjects = ({ limit = 3, showHeader = true }) => {
 
                     {/* Key Metrics */}
                     <div className="grid grid-cols-2 gap-3 pt-2">
-                      {project.performanceStats.slice(0, 2).map((stat, sIdx) => (
+                      {(project.performanceStats ?? []).slice(0, 2).map((stat, sIdx) => (
                         <div
                           key={sIdx}
                           className={`p-3 rounded-2xl ${

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import SectionHeader from '../ui/SectionHeader';
 import GlassCard from '../ui/GlassCard';
@@ -9,24 +9,23 @@ const pinnedRepos = [
   { name: 'luxoragift-storefront', desc: 'Bespoke luxury gifting e-commerce SPA engine with 3D product preview built with React 19.', stars: 342, forks: 89, lang: 'TypeScript', color: '#3178C6' },
   { name: 'neumorphism-react-tokens', desc: 'Lightweight Neumorphic & Glassmorphic UI design token system for React and Tailwind CSS.', stars: 620, forks: 145, lang: 'JavaScript', color: '#F7DF1E' },
   { name: 'retailrow-pos-core', desc: 'Omnichannel retail inventory synchronization system with WebSocket real-time event pipeline.', stars: 215, forks: 42, lang: 'PHP', color: '#777BB4' },
-  { name: 'fast-virtualized-[#canvas]', desc: 'High-performance 60 FPS HTML5 Canvas ticker & financial charting engine for React.', stars: 490, forks: 110, lang: 'React', color: '#61DAFB' }
+  { name: 'fast-virtualized-canvas', desc: 'High-performance 60 FPS HTML5 Canvas ticker & financial charting engine for React.', stars: 490, forks: 110, lang: 'React', color: '#61DAFB' }
 ];
 
 export const GithubSection = () => {
   const { isDark } = useTheme();
 
-  // Generate simulated 52-week contribution grid (364 blocks)
+  // Generate simulated 52-week contribution grid (364 blocks) - memoized so it's stable
   const weeks = 52;
   const daysPerWeek = 7;
-  const grid = Array.from({ length: weeks * daysPerWeek }, (_, i) => {
-    // Generate varied activity intensity 0 to 4
+  const grid = useMemo(() => Array.from({ length: weeks * daysPerWeek }, () => {
     const rand = Math.random();
     if (rand > 0.85) return 4;
     if (rand > 0.65) return 3;
     if (rand > 0.45) return 2;
     if (rand > 0.25) return 1;
     return 0;
-  });
+  }), []);
 
   const getIntensityColor = (val) => {
     if (val === 4) return 'bg-[#6C63FF] shadow-sm shadow-[#6C63FF]';

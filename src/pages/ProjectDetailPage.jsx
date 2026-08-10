@@ -67,7 +67,7 @@ export const ProjectDetailPage = () => {
 
         {/* Performance Metrics Bar */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
-          {project.performanceStats.map((stat, idx) => (
+          {(project.performanceStats ?? []).map((stat, idx) => (
             <GlassCard key={idx} neumorphic className="p-6 text-center">
               <p className="text-xs font-semibold text-[#667085] dark:text-[#CBD5E1]">{stat.label}</p>
               <h3 className="text-2xl sm:text-3xl font-extrabold gradient-text mt-1">{stat.value}</h3>
