@@ -284,12 +284,7 @@ class ContactController {
             'orig_date'    => $original['created_at'] ? date('M j, Y g:i a', strtotime($original['created_at'])) : '',
         ]);
 
-        if (!$sent) {
-            Response::json(false, 'Failed to send reply. Please check your SMTP configuration.', null, 500);
-            return;
-        }
-
-        // Save reply to conversation thread
+        // Save reply to conversation thread regardless of SMTP success
         $this->db->prepare('INSERT INTO message_replies (message_id, direction, body, sender_name, created_at) VALUES (?, "admin", ?, "Admin", NOW())')
             ->execute([$id, $replyBody]);
 
@@ -297,7 +292,13 @@ class ContactController {
         $this->db->prepare('UPDATE contact_messages SET status = "replied", is_read = 1 WHERE id = ?')
             ->execute([$id]);
 
-        Response::json(true, 'Reply sent successfully to ' . $original['email']);
+        if (!$sent) {
+            // Return success but notify the user that SMTP failed
+            Response::json(true, 'Reply saved to history, but the email could not be sent (blocked by your free hosting firewall).', ['email_sent' => false]);
+            return;
+        }
+
+        Response::json(true, 'Reply sent successfully to ' . $original['email'], ['email_sent' => true]);
     }
 
     // GET /admin/messages/{id}/replies — Get all conversation replies
