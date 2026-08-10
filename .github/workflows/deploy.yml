@@ -6,7 +6,7 @@ on:
 
 jobs:
   web-deploy:
-    name: Build & Deploy via FTP
+    name: Build & Deploy via LFTP
     runs-on: ubuntu-latest
 
     steps:
@@ -28,24 +28,11 @@ jobs:
         working-directory: ./frontend
         run: npm run build
 
-      - name: 🚀 Deploy Frontend (dist) to InfinityFree /htdocs
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./frontend/dist/
-          server-dir: /htdocs/
-
-      - name: 🚀 Deploy Backend API to InfinityFree /htdocs/backend
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./backend/
-          server-dir: /htdocs/backend/
+      - name: 🚀 Deploy to InfinityFree via LFTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y lftp
+          lftp -e "set ftp:ssl-allow no; set net:timeout 15; set net:max-retries 3; set ftp:passive-mode true; mirror -R --verbose --exclude-glob .git* ./frontend/dist /htdocs; mirror -R --verbose --exclude-glob .git* ./backend /htdocs/backend; quit" -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER"
