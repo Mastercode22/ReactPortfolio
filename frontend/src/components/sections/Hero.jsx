@@ -95,6 +95,7 @@ export const Hero = () => {
           muted
           playsInline
           preload="auto"
+          poster="/images/ecom.jpg"
           className="w-full h-full object-cover opacity-65 dark:opacity-65 transition-opacity duration-500 scale-105"
         >
           <source src="/images/hero-animation.mp4" type="video/mp4" fetchPriority="high" />

@@ -11,3 +11,56 @@
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 </IfModule>
+
+# ── Video MIME Types ──────────────────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType video/mp4  .mp4 .m4v
+  AddType video/webm .webm
+  AddType video/ogg  .ogv
+</IfModule>
+
+# ── Enable partial content / byte-range requests (video streaming) ────────────
+<IfModule mod_headers.c>
+  # Allow video byte-range requests so browsers can stream without full download
+  <FilesMatch "\.(mp4|webm|ogv|m4v)$">
+    Header set Accept-Ranges bytes
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Aggressive caching for all static assets (images, fonts, JS, CSS)
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|otf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # index.html must never be cached (so updated deploys show immediately)
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# ── GZIP Compression ──────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml font/woff2
+</IfModule>
+
+# ── Expires Headers (fallback if mod_headers not available) ──────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType video/mp4              "access plus 1 year"
+  ExpiresByType video/webm             "access plus 1 year"
+  ExpiresByType image/jpeg             "access plus 1 year"
+  ExpiresByType image/png              "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css               "access plus 1 year"
+  ExpiresByType font/woff2             "access plus 1 year"
+  ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>
