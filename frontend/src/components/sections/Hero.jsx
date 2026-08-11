@@ -95,21 +95,29 @@ export const Hero = () => {
           muted
           playsInline
           preload="auto"
-          poster="/images/ecom.jpg"
           className="w-full h-full object-cover opacity-65 dark:opacity-65 transition-opacity duration-500 scale-105"
         >
-          {/* WebM — smaller file, loads faster on Chrome/Firefox/Edge */}
+          {/* ── Mobile (≤768px): 480px-wide compressed version — ~75% smaller file ── */}
+          <source
+            media="(max-width: 768px)"
+            src="https://res.cloudinary.com/dhxh1s2h/video/upload/w_480,q_auto,f_webm/v1786446737/hero-animation.mp4"
+            type="video/webm"
+          />
+          <source
+            media="(max-width: 768px)"
+            src="https://res.cloudinary.com/dhxh1s2h/video/upload/w_480,q_auto/v1786446737/hero-animation.mp4"
+            type="video/mp4"
+          />
+          {/* ── Desktop: Full quality WebM (smaller than MP4) ── */}
           <source
             src="https://res.cloudinary.com/dhxh1s2h/video/upload/q_auto,f_webm/v1786446737/hero-animation.mp4"
             type="video/webm"
           />
-          {/* MP4 — Cloudinary CDN with auto quality (Safari + universal fallback) */}
+          {/* ── Desktop: MP4 fallback (Safari) ── */}
           <source
             src="https://res.cloudinary.com/dhxh1s2h/video/upload/q_auto/v1786446737/hero-animation.mp4"
             type="video/mp4"
           />
-          {/* Local fallback if Cloudinary is unreachable */}
-          <source src="/images/hero-animation.mp4" type="video/mp4" />
         </video>
         
         {/* Seamless Vignette Overlay */}
