@@ -98,7 +98,18 @@ export const Hero = () => {
           poster="/images/ecom.jpg"
           className="w-full h-full object-cover opacity-65 dark:opacity-65 transition-opacity duration-500 scale-105"
         >
-          <source src="/images/hero-animation.mp4" type="video/mp4" fetchPriority="high" />
+          {/* WebM — smaller file, loads faster on Chrome/Firefox/Edge */}
+          <source
+            src="https://res.cloudinary.com/dhxh1s2h/video/upload/q_auto,f_webm/v1786446737/hero-animation.mp4"
+            type="video/webm"
+          />
+          {/* MP4 — Cloudinary CDN with auto quality (Safari + universal fallback) */}
+          <source
+            src="https://res.cloudinary.com/dhxh1s2h/video/upload/q_auto/v1786446737/hero-animation.mp4"
+            type="video/mp4"
+          />
+          {/* Local fallback if Cloudinary is unreachable */}
+          <source src="/images/hero-animation.mp4" type="video/mp4" />
         </video>
         
         {/* Seamless Vignette Overlay */}
