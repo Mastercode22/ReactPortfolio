@@ -212,7 +212,7 @@ export const ProjectModal = ({ project, onClose }) => {
                   variant="glass"
                   icon={BookOpen}
                   title="Read the full case study"
-                  onClick={() => { onClose(); navigate(`/projects/${project.id}`); }}
+                  onClick={() => { onClose(); navigate(`/projects/${project.slug || project.id}`); }}
                 >
                   Case Study
                 </NeumorphicButton>
