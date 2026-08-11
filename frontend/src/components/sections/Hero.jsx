@@ -94,11 +94,10 @@ export const Hero = () => {
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           className="w-full h-full object-cover opacity-65 dark:opacity-65 transition-opacity duration-500 scale-105"
         >
-          <source src="/images/hero-animation.mp4" type="video/mp4" />
-          <source src="https://cdn.dribbble.com/userupload/45912796/file/large-c379622c2b6a54e96d94177031ecd40f.mp4" type="video/mp4" />
+          <source src="/images/hero-animation.mp4" type="video/mp4" fetchPriority="high" />
         </video>
         
         {/* Seamless Vignette Overlay */}
